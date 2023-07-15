@@ -20,6 +20,7 @@
       name="description"
       content="A Front End Web Developer passionate about creating interactive applications and experiences on the web."
     />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;1,400&display=swap"
       rel="stylesheet"
@@ -38,7 +39,7 @@
     </div>
     <!-- Side menu -->
     <aside class="sideMenu sideMenuShow" id="sideMenu">
-      <p class="logo">Ac</p>
+      <p style="font-size: 2rem" class="logo">QTT</p>
 
       <nav>
         <ul class="navBar">
@@ -60,31 +61,31 @@
               <span class="navItemName">SKILLS</span>
             </a>
           </li>
-          <li class="bookNav">
-            <a href="#books" class="navItem">
-              <i class="lni lni-book"></i>
-              <span class="navItemName">Book</span>
-            </a>
-          </li>
           <li class="worksNav">
             <a href="#works" class="navItem">
               <i class="lni lni-briefcase"></i>
               <span class="navItemName">WORKS</span>
             </a>
           </li>
-          <li class="contactNav">
+          <li class="bookNav">
+            <a href="#books" class="navItem">
+              <i class="lni lni-book"></i>
+              <span class="navItemName">Book</span>
+            </a>
+          </li>
+          <!-- <li class="contactNav">
             <a href="#contact" class="navItem">
               <i class="lni lni-phone"></i>
               <span class="navItemName">CONTACT</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
 
-      <div class="scrollDown" id="scrollDown">
+      <a class="scrollDown" href="#scrollDown">
         <i class="lni lni-arrow-down"></i>
         <span class="navItemName scrollDownText">Scroll Down</span>
-      </div>
+      </a>
     </aside>
 
     <!--Beginning of the wrapper -->
@@ -105,42 +106,43 @@
             <div class="socialsResume">
               <a
                 class="resumeLink"
-                href="assets/Alex-Calia-Resume.pdf"
-                alt="Alex Calia's resumé"
+                href="assets/resume/Quách_Thế_Trường_Intership_Resume.pdf"
+                alt="QTT's resumé"
                 target="_blank"
                 rel="noopener noreferrer"
-                >Resumé</a
+                >My CV</a
               >
               <ul class="socialsList">
                 <li>
-                  <a
-                    href="https://www.linkedin.com/in/alexander-calia-33190337/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><i
-                      class="lni lni-linkedin-original"
-                      aria-label="Link to Alex's LinkedIn page."
-                    ></i
-                  ></a>
-                </li>
-                <li>
-                  <a href="https://github.com/alexcalia" target="_blank" rel="noopener noreferrer"
-                    ><i class="lni lni-github-original" aria-label="Link to Alex's GitHub page."></i
+                  <a href="https://github.com/qtt153759" target="_blank" rel="noopener noreferrer"
+                    ><i class="lni lni-github-original" aria-label="Link to QTT's GitHub page."></i
                   ></a>
                 </li>
                 <li>
                   <a
-                    href="https://twitter.com/AlexanderCalia"
+                    href="https://leetcode.com/qtt153759/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    ><i
-                      class="lni lni-twitter-original"
-                      aria-label="Link to Alex's Twitter profile."
-                    ></i
+                    ><img
+                      style="width: 20px"
+                      src="assets/images/leetcode-svgrepo-com.svg"
+                      alt="Link to QTT's LeetCode page."
+                      aria-label="Link to QTT's LeetCode page."
+                  /></a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.facebook.com/quach.thetruong.7/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="lni lni-facebook"></i
                   ></a>
                 </li>
               </ul>
             </div>
+            <p style="margin-top: 2rem" class="smallBio">
+              <span>Email:</span> truong.quach.hust@gmail.com
+            </p>
           </div>
         </header>
         <!-- Beginning of Main -->
@@ -240,19 +242,19 @@
                 <li>
                   <div class="itemContainer">
                     <img src="assets/skills/NLP.png" />
-                    <p>Natural language processing</p>
+                    <p style="font-size: 10px">Natural language processing</p>
                   </div>
                 </li>
                 <li>
                   <div class="itemContainer">
                     <img src="assets/skills/CV.svg" />
-                    <p>Computer vision</p>
+                    <p style="font-size: 10px">Computer vision</p>
                   </div>
                 </li>
                 <li>
                   <div class="itemContainer">
                     <img src="assets/skills/RL.png" />
-                    <p>Reinforcement learning</p>
+                    <p style="font-size: 9px">Reinforcement learning</p>
                   </div>
                 </li>
                 <li>
@@ -334,7 +336,7 @@
                 <li>
                   <div class="itemContainer">
                     <img src="assets/skills/elasticsearch.svg" />
-                    <p>Elasticsearch</p>
+                    <p style="font-size: 10px">Elasticsearch</p>
                   </div>
                 </li>
                 <li>
@@ -353,7 +355,7 @@
               <ul class="skillsGrid">
                 <li>
                   <div class="itemContainer">
-                    <p>Programing language</p>
+                    <p style="font-size: 10px">Programing language</p>
                   </div>
                 </li>
                 <li>
@@ -421,7 +423,7 @@
                 <li>
                   <div class="itemContainer">
                     <img src="assets/skills/gitlab cicd.svg" />
-                    <p>Gitlab CI/CD</p>
+                    <p style="font-size: 10px">Gitlab CI/CD</p>
                   </div>
                 </li>
                 <li>
@@ -432,15 +434,6 @@
                 </li>
               </ul>
             </div>
-          </section>
-          <!-- Works Section -->
-          <section class="bookSection" id="works">
-            <div class="sectionHead">
-              <span>TAKE A LOOK AT MY</span>
-              <h2>Books</h2>
-            </div>
-
-            <div class="bookContainer sectionContainer"></div>
           </section>
 
           <!-- Works Section -->
@@ -453,34 +446,36 @@
             <div class="worksContainer sectionContainer">
               <article class="workBox">
                 <div class="workImageContainer">
-                  <img src="assets/images/stonks.PNG" alt="Stonk." />
+                  <img src="assets/projects/finalcial_data_platform.png" />
                 </div>
                 <div class="workDescribeContainer">
-                  <h3>Stonk Market</h3>
+                  <h3>
+                    Financial Data Platformt
+                    <span style="font-size: 12px">&nbsp; (12/2022-2/2023)</span>
+                  </h3>
                   <h4>
-                    Technologies Used: <span class="techStack">React</span>,
-                    <span class="techStack">REST API</span>, <span class="techStack">ChartJS</span>
+                    Technologies Used: <span class="techStack">Spark</span>,
+                    <span class="techStack">Kafka</span>,
+                    <span class="techStack">Redshift</span>
+                    <span class="techStack">Airflow</span>
+                    <span class="techStack">Athena</span>,
+                    <span class="techStack">Quicksight</span>,
+                    <span class="techStack">Selenium</span>
                   </h4>
                   <ul>
-                    <li>Completely built with hooks and functional components</li>
+                    <li>A pipeline for financial data from the internet to a dashboard</li>
                     <li>
-                      Emulates time passage, and stock prices update randomly as each "day" passes
+                      Perform ETL operations on data from multiple sources using Kafka and Spark
                     </li>
                     <li>
-                      Real-time updates on stock and portfolio performance, visualized with
-                      interactive charts
+                      Save cleaned data to a Redshift data warehouse and visualize it with
+                      QuickSight
                     </li>
+                    <li>Automate Data Pipelines with Apache Airflow</li>
                   </ul>
                   <div class="workLinks">
                     <a
-                      href="https://alexcalia.com/stonks"
-                      class="liveLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Live</a
-                    >
-                    <a
-                      href="https://github.com/alexcalia/stonks"
+                      href="https://github.com/qtt153759/bigdata_project"
                       class="repoLink"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -493,38 +488,57 @@
               <article class="workBox">
                 <div class="workImageContainer">
                   <img
-                    src="assets/images/podcastprioritizer.PNG"
+                    src="assets/projects/pingdaily.png"
                     alt="Podcast Prioritizer landing page."
                   />
                 </div>
                 <div class="workDescribeContainer">
-                  <h3>Podcast Prioritizer</h3>
+                  <h3>Pingdaily<span style="font-size: 12px">&nbsp; (3/2022-6/2022)</span></h3>
                   <h4>
-                    Technologies Used: <span class="techStack">React</span>,
-                    <span class="techStack">REST API</span>,
-                    <span class="techStack">Firebase</span>,
-                    <span class="techStack">Google Authentication</span>
+                    Technologies Used: <span class="techStack">NestJs</span>,
+                    <span class="techStack">ReactJs</span>, <span class="techStack">Redis</span>,
+                    <span class="techStack">EC2</span>, <span class="techStack">S3</span>,
+                    <span class="techStack">Docker</span>,
+                    <span class="techStack">Kong Gateway</span>,
+                    <span class="techStack">Gitlab CI/CD</span>
+                  </h4>
+                  <ul>
+                    <li>The Enterprise Human Resources Management Software</li>
+                    <li>
+                      Simplify employee management storing employee information, tracking
+                      attendance, managing timekeeping, and facilitating leave requests
+                    </li>
+                    <li>Integrated with slack and Google account</li>
+                    <li>Deploy using Docker containers on AWS EC2</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="workBox">
+                <div class="workImageContainer">
+                  <img src="assets/projects/multilabel.jpg" />
+                </div>
+                <div class="workDescribeContainer">
+                  <h3>
+                    Tourist Attraction in Hanoi: Multi-Label Image Classification
+                    <span style="font-size: 12px">&nbsp; (6/2023)</span>
+                  </h3>
+                  <h4>
+                    Technologies Used: <span class="techStack">Tensorflow</span>,
+                    <span class="techStack">Keras</span>,
+                    <span class="techStack">Hugging face</span>
                   </h4>
                   <ul>
                     <li>
-                      Uses the MapQuest and ListenNotes API to get route times and filter podcast
-                      search results based on travel time
+                      Classify images of tourist attractions in Hanoi into one or more of the 10
+                      available locations
                     </li>
-                    <li>
-                      Google Authenitcation service allows users to sign in and save podcasts to a
-                      list, stored in Firebase
-                    </li>
+                    <li>Dataset only has 200 labeled images</li>
+                    <li>Our appoach includes using ResNet50, GoogleNet, VGG, Vit, Autoencoder</li>
                   </ul>
                   <div class="workLinks">
                     <a
-                      href="https://alexcalia.com/podcastprioritizer"
-                      class="liveLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Live</a
-                    >
-                    <a
-                      href="https://github.com/alexcalia/podcastprioritizer"
+                      href="https://github.com/qtt153759/image_multilabel"
                       class="repoLink"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -536,79 +550,28 @@
 
               <article class="workBox">
                 <div class="workImageContainer">
-                  <img src="assets/images/cohort.PNG" alt="COHORT app's Collaborate page." />
+                  <img src="assets/projects/acos.png" alt="Game Scope landing page." />
                 </div>
                 <div class="workDescribeContainer">
-                  <h3>COHORT</h3>
+                  <h3>
+                    Aspect Category Opinion Sentiment
+                    <span style="font-size: 12px">&nbsp; (6/2023)</span>
+                  </h3>
                   <h4>
-                    Technologies Used: <span class="techStack">React</span>,
-                    <span class="techStack">React Router</span>,
-                    <span class="techStack">Firebase</span>, <span class="techStack">REST API</span>
+                    Technologies Used: <span class="techStack">Tensorflow</span>,
+                    <span class="techStack">Keras</span>,
+                    <span class="techStack">Hugging face</span>
                   </h4>
                   <ul>
                     <li>
-                      React Router was used to create multiple views for the chat and quotes systems
+                      Build a model that aims to extract all aspect-category-opinion-sentiment
+                      quadruples
                     </li>
-                    <li>
-                      Real-time chat where users can change their username, with all messages stored
-                      in Firebase
-                    </li>
-                    <li>
-                      Pulls a random quote from an API where users can write an anonymous reflection
-                      for others to see, all stored in Firebase
-                    </li>
-                  </ul>
-                  <div class="workLinks">
-                    <a href="https://alexcalia.com/cohort" class="liveLink" target="_blank">Live</a>
-                    <a
-                      href="https://github.com/alexcalia/cohortApp"
-                      class="repoLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Repo</a
-                    >
-                    <a
-                      href="https://www.loom.com/share/f615f75be23b40639d3cf74b163c71bc"
-                      class="demoLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Demo</a
-                    >
-                  </div>
-                </div>
-              </article>
-
-              <article class="workBox">
-                <div class="workImageContainer">
-                  <img src="assets/images/gamescope.PNG" alt="Game Scope landing page." />
-                </div>
-                <div class="workDescribeContainer">
-                  <h3>Game Scope</h3>
-                  <h4>
-                    Technologies Used: <span class="techStack">JQuery</span>,
-                    <span class="techStack">REST API</span>, <span class="techStack">SASS</span>
-                  </h4>
-                  <ul>
-                    <li>Information on games pulled from a video game API</li>
-                    <li>
-                      Games can be filtered by genre using a drop down menu, where the endpoint is
-                      updated dynamically
-                    </li>
-                    <li>
-                      Using pagination, more games from the genres can be pulled as users request
-                      them
-                    </li>
+                    <li>The model uses Flan-T5, a pretrained model that is based on prompting</li>
                   </ul>
                   <div class="workLinks">
                     <a
-                      href="https://alexcalia.com/gamescope"
-                      class="liveLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Live</a
-                    >
-                    <a
-                      href="https://github.com/alexcalia/gamescope"
+                      href="https://github.com/qtt153759/ACOS"
                       class="repoLink"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -621,87 +584,109 @@
               <article class="workBox">
                 <div class="workImageContainer">
                   <img
-                    src="assets/images/slangapp.PNG"
+                    src="assets/projects/bookingCare.png"
                     alt="Twitter Slang Generator page with results diplsayed."
                   />
                 </div>
                 <div class="workDescribeContainer">
-                  <h3>Twitter Slang Generator</h3>
+                  <h3>
+                    Clone Bookingcare.vn
+                    <span style="font-size: 12px">&nbsp; (11/2021-2/2022)</span>
+                  </h3>
                   <h4>
-                    Technologies Used: <span class="techStack">JQuery</span>,
-                    <span class="techStack">SASS</span>
+                    Technologies Used: <span class="techStack">Nodejs</span>,
+                    <span class="techStack">Reactjs</span>
+                    <span class="techStack">Heroku</span>
                   </h4>
                   <ul>
                     <li>
-                      Users click an abbreviation and are given a randomly generated definition
+                      Admin manage doctors, patients, appointments, and other data on the website
                     </li>
-                    <li>
-                      Words are randomly chosen from a large object containing arrays of words for
-                      each letter
-                    </li>
-                    <li>Toggle between light and dark themes</li>
-                    <li>
-                      Secret mode can be unlocked where users can enter their own abbreviations
-                    </li>
+                    <li>Doctors and patients can schedule appointments, view medical records</li>
+
+                    <li>Website is deployed on Heroku</li>
                   </ul>
                   <div class="workLinks">
                     <a
-                      href="https://alexcalia.com/slangapp"
-                      class="liveLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Live</a
-                    >
-                    <a
-                      href="https://github.com/alexcalia/slangapp"
+                      href="https://github.com/qtt153759/bookingCare_Backend"
                       class="repoLink"
                       target="_blank"
                       rel="noopener noreferrer"
-                      >Repo</a
+                      >Backend repo</a
+                    >
+                    <a
+                      href="https://github.com/qtt153759/bookingCare_Frontend"
+                      class="repoLink"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Frontend repo</a
                     >
                   </div>
                 </div>
               </article>
-
               <article class="workBox">
                 <div class="workImageContainer">
-                  <img src="assets/images/psdconversion.PNG" alt="Sanctuary Helpers home page." />
+                  <img
+                    src="assets/projects/population-management.png"
+                    alt="Twitter Slang Generator page with results diplsayed."
+                  />
                 </div>
                 <div class="workDescribeContainer">
-                  <h3>Sanctuary Helpers</h3>
+                  <h3>
+                    Population-Management
+                    <span style="font-size: 12px">&nbsp; (11/2021-12/2021)</span>
+                  </h3>
                   <h4>
-                    Technologies Used: <span class="techStack">HTML</span>,
-                    <span class="techStack">CSS</span>
+                    Technologies Used: <span class="techStack">Nodejs</span>,
+                    <span class="techStack">Reactjs</span>
+                    <span class="techStack">Docker</span>
                   </h4>
                   <ul>
-                    <li>
-                      Large display mockup and sizings were given and translated into a fully
-                      responsive website
-                    </li>
-                    <li>Orientation for smaller displays were determined by me</li>
+                    The system enables local population management officials to:
+                    <div></div>
+                    <li>Manage resident identification accounts</li>
+                    <li>Manage demographics and household registration</li>
+
+                    <li>Manage temporary residence and absence</li>
+                    <li>Collect contributions, fees, and perform statistics</li>
                   </ul>
                   <div class="workLinks">
                     <a
-                      href="https://alexcalia.com/psdconversion"
-                      class="liveLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Live</a
-                    >
-                    <a
-                      href="https://github.com/alexcalia/psdconversion"
+                      href="https://github.com/nhdoanh/IT3180"
                       class="repoLink"
                       target="_blank"
                       rel="noopener noreferrer"
-                      >Repo</a
+                      >Backend repo</a
+                    >
+                    <a
+                      href="https://github.com/luongdao138/population-management"
+                      class="repoLink"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Frontend repo</a
                     >
                   </div>
                 </div>
               </article>
             </div>
           </section>
+          <!-- Works Section -->
+          <section class="bookSection" id="books">
+            <div class="sectionHead">
+              <span>TAKE A LOOK AT MY</span>
+              <h2>Books</h2>
+            </div>
 
-          <!-- Contact Section -->
+            <div class="bookContainer sectionContainer">
+              <p>1. Cracking the coding interview</p>
+              <p>2. Head First Design Patterns</p>
+              <p>3. Hands-On Machine Learning with Scikit-Learn and TensorFlow</p>
+              <p>4. Spark: The Definitive Guide</p>
+              <p>5. Kafka: The Definitive Guide</p>
+              <p>6. Natural Language Processing with Transformers</p>
+            </div>
+          </section>
+          <!-- Contact Section
           <section class="contactSection" id="contact">
             <div class="sectionHead">
               <span>SAY HELLO</span>
@@ -783,13 +768,13 @@
                 </button>
               </div>
             </div>
-          </section>
+          </section> -->
         </main>
         <!-- End of Main -->
       </div>
       <!-- Footer -->
-      <footer>
-        <p>&copy; Alex Calia 2020</p>
+      <footer id="scrollDown">
+        <p>&copy; Truong Quach 2023</p>
       </footer>
       <!-- Icons provided by https://lineicons.com/ -->
     </div>

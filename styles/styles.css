@@ -373,8 +373,9 @@ section {
 }
 
 .outerWrapper {
-  width: calc(100% - 90px);
-  margin-left: 90px;
+  /* width: calc(100% - 200px); */
+  margin-left: 200px;
+  /* margin: auto; */
   overflow: hidden;
 }
 
@@ -836,7 +837,7 @@ header .heroDescription .socialsResume .resumeLink:focus {
 }
 
 .workBox .workDescribeContainer .workLinks {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .workBox .workDescribeContainer .workLinks a {
@@ -1053,6 +1054,10 @@ footer p {
   color: #333;
   font-size: 1rem;
   text-align: center;
+}
+.bookContainer p {
+  font-size: 1rem;
+  padding: 10px 0px;
 }
 
 /**********************/
