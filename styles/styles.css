@@ -607,6 +607,7 @@ header .heroImageContainer {
 header .heroImageContainer img {
   border-radius: 50%;
   margin: 0 auto;
+  object-fit: cover;
   width: 350px;
   height: 350px;
   -webkit-box-shadow: 12px 0 #d9c8f1, 24px 0 #e2d6f3, 36px 0 #ece6f5;
