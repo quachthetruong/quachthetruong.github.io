@@ -1,7 +1,7 @@
 ---
 title: "Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution"
 date: 2024-12-23T17:29:51+07:00
-tags: ["probability", "math", "computer science"]
+tags: ["math", "computer science"]
 ---
 
 ## Part 1: Motivation
