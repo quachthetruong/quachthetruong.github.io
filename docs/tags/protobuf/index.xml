@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Protobuf on TruongQuach</title>
-    <link>http://localhost:1313/tags/protobuf/</link>
+    <link>https://quachthetruong.github.io/tags/protobuf/</link>
     <description>Recent content in Protobuf on TruongQuach</description>
     <image>
       <title>TruongQuach</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
+      <url>https://quachthetruong.github.io/papermod-cover.png</url>
+      <link>https://quachthetruong.github.io/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 23 Dec 2024 17:29:51 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/protobuf/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://quachthetruong.github.io/tags/protobuf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Extend grpc methods with custom options in Go</title>
-      <link>http://localhost:1313/posts/technical/grpc-go-custom-options/</link>
+      <link>https://quachthetruong.github.io/posts/technical/grpc-go-custom-options/</link>
       <pubDate>Mon, 23 Dec 2024 17:29:51 +0700</pubDate>
-      <guid>http://localhost:1313/posts/technical/grpc-go-custom-options/</guid>
+      <guid>https://quachthetruong.github.io/posts/technical/grpc-go-custom-options/</guid>
       <description>&lt;h2 id=&#34;custom-method-option-in-grpc-go&#34;&gt;Custom method option in grpc go&lt;/h2&gt;
 &lt;p&gt;Recently, I was implementing various apis in Go with gppc/grpc-gateway and a problem arose. Have a look at this example:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-protobuf&#34; data-lang=&#34;protobuf&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;message&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;GetFlowersRequest&lt;/span&gt; {&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
