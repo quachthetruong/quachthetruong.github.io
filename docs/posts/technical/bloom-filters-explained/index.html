@@ -18,16 +18,16 @@ but it stores the full elements, requiring more memory than raw data — especia
 So what if we trade a little accuracy for massive savings?
 What if a structure could:">
 <meta name="author" content="Truong">
-<link rel="canonical" href="https://github.com/quachthetruong/posts/technical/bloom-filters-explained/">
+<link rel="canonical" href="https://quachthetruong.github.io/posts/technical/bloom-filters-explained/">
 <link crossorigin="anonymous" href="/quachthetruong/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://github.com/quachthetruong/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://github.com/quachthetruong/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://github.com/quachthetruong/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://github.com/quachthetruong/apple-touch-icon.png">
-<link rel="mask-icon" href="https://github.com/quachthetruong/safari-pinned-tab.svg">
+<link rel="icon" href="https://quachthetruong.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://quachthetruong.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://quachthetruong.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://quachthetruong.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://quachthetruong.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://github.com/quachthetruong/posts/technical/bloom-filters-explained/">
+<link rel="alternate" hreflang="en" href="https://quachthetruong.github.io/posts/technical/bloom-filters-explained/">
 <noscript>
     <style>
         #theme-toggle,
@@ -76,12 +76,12 @@ but it stores the full elements, requiring more memory than raw data — especia
 So what if we trade a little accuracy for massive savings?
 What if a structure could:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://github.com/quachthetruong/posts/technical/bloom-filters-explained/" /><meta property="og:image" content="https://github.com/quachthetruong/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://quachthetruong.github.io/posts/technical/bloom-filters-explained/" /><meta property="og:image" content="https://quachthetruong.github.io/papermod-cover.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-12-23T17:29:51+07:00" />
 <meta property="article:modified_time" content="2024-12-23T17:29:51+07:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://github.com/quachthetruong/papermod-cover.png"/>
+<meta name="twitter:image" content="https://quachthetruong.github.io/papermod-cover.png"/>
 
 <meta name="twitter:title" content="Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution"/>
 <meta name="twitter:description" content="Part 1: Motivation
@@ -105,13 +105,13 @@ What if a structure could:"/>
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://github.com/quachthetruong/posts/"
+      "item": "https://quachthetruong.github.io/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution",
-      "item": "https://github.com/quachthetruong/posts/technical/bloom-filters-explained/"
+      "item": "https://quachthetruong.github.io/posts/technical/bloom-filters-explained/"
     }
   ]
 }
@@ -137,14 +137,14 @@ What if a structure could:"/>
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://github.com/quachthetruong/posts/technical/bloom-filters-explained/"
+    "@id": "https://quachthetruong.github.io/posts/technical/bloom-filters-explained/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "TruongQuach",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://github.com/quachthetruong/favicon.ico"
+      "url": "https://quachthetruong.github.io/favicon.ico"
     }
   }
 }
@@ -166,7 +166,7 @@ What if a structure could:"/>
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://github.com/quachthetruong/" accesskey="h" title="TruongQuach (Alt + H)">TruongQuach</a>
+            <a href="https://quachthetruong.github.io/" accesskey="h" title="TruongQuach (Alt + H)">TruongQuach</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -194,22 +194,22 @@ What if a structure could:"/>
         </div>
         <ul id="menu">
             <li>
-                <a href="https://github.com/quachthetruong/archives" title="Archive">
+                <a href="https://quachthetruong.github.io/archives" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="https://github.com/quachthetruong/categories/" title="Categories">
+                <a href="https://quachthetruong.github.io/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="https://github.com/quachthetruong/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://quachthetruong.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="https://github.com/quachthetruong/tags/" title="Tags">
+                <a href="https://quachthetruong.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
@@ -220,7 +220,7 @@ What if a structure could:"/>
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://github.com/quachthetruong/">Home</a>&nbsp;»&nbsp;<a href="https://github.com/quachthetruong/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://quachthetruong.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://quachthetruong.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution
     </h1>
@@ -587,9 +587,9 @@ align-items: center; display:flex; border-radius: 8px;"><img src="https://latex.
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://github.com/quachthetruong/tags/probability/">Probability</a></li>
-      <li><a href="https://github.com/quachthetruong/tags/math/">Math</a></li>
-      <li><a href="https://github.com/quachthetruong/tags/computer-science/">Computer Science</a></li>
+      <li><a href="https://quachthetruong.github.io/tags/probability/">Probability</a></li>
+      <li><a href="https://quachthetruong.github.io/tags/math/">Math</a></li>
+      <li><a href="https://quachthetruong.github.io/tags/computer-science/">Computer Science</a></li>
     </ul>
 
 
@@ -684,7 +684,7 @@ align-items: center; display:flex; border-radius: 8px;"><img src="https://latex.
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://github.com/quachthetruong/">TruongQuach</a></span>
+    <span>&copy; 2025 <a href="https://quachthetruong.github.io/">TruongQuach</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
