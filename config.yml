@@ -4,7 +4,7 @@ pagination:
   pageSize: 10
 theme:
   - disqus
-  - PaperMod
+  - hugo-PaperMod
 
 social: true
 enableInlineShortcodes: true
