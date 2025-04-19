@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on TruongQuach</title>
-    <link>http://localhost:1313/Truong_Quach/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on TruongQuach</description>
     <image>
       <title>TruongQuach</title>
-      <url>http://localhost:1313/Truong_Quach/papermod-cover.png</url>
-      <link>http://localhost:1313/Truong_Quach/papermod-cover.png</link>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
     </image>
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <lastBuildDate>Mon, 23 Dec 2024 17:29:51 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/Truong_Quach/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution</title>
-      <link>http://localhost:1313/Truong_Quach/posts/technical/bloom-filters-explained/</link>
+      <link>http://localhost:1313/posts/technical/bloom-filters-explained/</link>
       <pubDate>Mon, 23 Dec 2024 17:29:51 +0700</pubDate>
-      <guid>http://localhost:1313/Truong_Quach/posts/technical/bloom-filters-explained/</guid>
+      <guid>http://localhost:1313/posts/technical/bloom-filters-explained/</guid>
       <description>&lt;h2 id=&#34;part-1-motivation&#34;&gt;Part 1: Motivation&lt;/h2&gt;
 &lt;h3 id=&#34;how-do-we-check-if-something-is-in-a-set--fast&#34;&gt;How do we check if something is in a set — fast?&lt;/h3&gt;
 &lt;p&gt;The simplest way is a &lt;code&gt;List&lt;/code&gt;:&lt;/p&gt;
