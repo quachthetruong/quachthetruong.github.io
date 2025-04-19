@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on TruongQuach</title>
-    <link>http://localhost:1313/quachthetruong/tags/</link>
+    <link>https://github.com/quachthetruong/tags/</link>
     <description>Recent content in Tags on TruongQuach</description>
     <image>
       <title>TruongQuach</title>
-      <url>http://localhost:1313/quachthetruong/papermod-cover.png</url>
-      <link>http://localhost:1313/quachthetruong/papermod-cover.png</link>
+      <url>https://github.com/quachthetruong/papermod-cover.png</url>
+      <link>https://github.com/quachthetruong/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 23 Dec 2024 17:29:51 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/quachthetruong/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://github.com/quachthetruong/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Computer Science</title>
-      <link>http://localhost:1313/quachthetruong/tags/computer-science/</link>
+      <link>https://github.com/quachthetruong/tags/computer-science/</link>
       <pubDate>Mon, 23 Dec 2024 17:29:51 +0700</pubDate>
-      <guid>http://localhost:1313/quachthetruong/tags/computer-science/</guid>
+      <guid>https://github.com/quachthetruong/tags/computer-science/</guid>
       <description></description>
     </item>
     <item>
       <title>Math</title>
-      <link>http://localhost:1313/quachthetruong/tags/math/</link>
+      <link>https://github.com/quachthetruong/tags/math/</link>
       <pubDate>Mon, 23 Dec 2024 17:29:51 +0700</pubDate>
-      <guid>http://localhost:1313/quachthetruong/tags/math/</guid>
+      <guid>https://github.com/quachthetruong/tags/math/</guid>
       <description></description>
     </item>
     <item>
       <title>Probability</title>
-      <link>http://localhost:1313/quachthetruong/tags/probability/</link>
+      <link>https://github.com/quachthetruong/tags/probability/</link>
       <pubDate>Mon, 23 Dec 2024 17:29:51 +0700</pubDate>
-      <guid>http://localhost:1313/quachthetruong/tags/probability/</guid>
+      <guid>https://github.com/quachthetruong/tags/probability/</guid>
       <description></description>
     </item>
   </channel>
