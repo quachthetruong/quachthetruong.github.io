@@ -2,33 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/technical/bloom-filters-explained/</loc>
+    <loc>https://quachthetruong.github.io/posts/technical/bloom-filters-explained/</loc>
     <lastmod>2024-12-23T17:29:51+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/computer-science/</loc>
+    <loc>https://quachthetruong.github.io/tags/computer-science/</loc>
     <lastmod>2024-12-23T17:29:51+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/math/</loc>
+    <loc>https://quachthetruong.github.io/tags/math/</loc>
     <lastmod>2024-12-23T17:29:51+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://quachthetruong.github.io/posts/</loc>
     <lastmod>2024-12-23T17:29:51+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/probability/</loc>
+    <loc>https://quachthetruong.github.io/tags/probability/</loc>
     <lastmod>2024-12-23T17:29:51+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://quachthetruong.github.io/tags/</loc>
     <lastmod>2024-12-23T17:29:51+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://quachthetruong.github.io/</loc>
     <lastmod>2024-12-23T17:29:51+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://quachthetruong.github.io/archives/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://quachthetruong.github.io/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://quachthetruong.github.io/search/</loc>
   </url><url>
-    <loc>http://localhost:1313/series/</loc>
+    <loc>https://quachthetruong.github.io/series/</loc>
   </url>
 </urlset>
