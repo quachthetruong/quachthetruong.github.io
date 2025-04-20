@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Computer Science on TruongQuach</title>
+    <title>Computer Science on Quach</title>
     <link>https://quachthetruong.github.io/tags/computer-science/</link>
-    <description>Recent content in Computer Science on TruongQuach</description>
+    <description>Recent content in Computer Science on Quach</description>
     <image>
-      <title>TruongQuach</title>
+      <title>Quach</title>
       <url>https://quachthetruong.github.io/papermod-cover.png</url>
       <link>https://quachthetruong.github.io/papermod-cover.png</link>
     </image>
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 23 Dec 2024 17:29:51 +0700</lastBuildDate>
+    <lastBuildDate>Fri, 18 Apr 2025 17:29:51 +0700</lastBuildDate>
     <atom:link href="https://quachthetruong.github.io/tags/computer-science/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution</title>
       <link>https://quachthetruong.github.io/posts/technical/bloom-filters-explained/</link>
-      <pubDate>Mon, 23 Dec 2024 17:29:51 +0700</pubDate>
+      <pubDate>Fri, 18 Apr 2025 17:29:51 +0700</pubDate>
       <guid>https://quachthetruong.github.io/posts/technical/bloom-filters-explained/</guid>
       <description>&lt;h2 id=&#34;part-1-motivation&#34;&gt;Part 1: Motivation&lt;/h2&gt;
 &lt;h3 id=&#34;how-do-we-check-if-something-is-in-a-set--fast&#34;&gt;How do we check if something is in a set — fast?&lt;/h3&gt;

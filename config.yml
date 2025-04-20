@@ -1,5 +1,5 @@
 baseURL: "https://quachthetruong.github.io/"
-title: TruongQuach
+title: Quach
 pagination:
   pageSize: 10
 theme:
@@ -77,16 +77,16 @@ params:
         url: tags
 
   homeInfoParams:
-    Title: "Seeing things through a different lens"
+    Title: "Strive for a life of significance"
     Content: >
-      story 🌟.
-  socialIcons:
-    - name: github
-      url: "https://github.com/quachthetruong"
-    - name: facebook
-      url: "https://www.facebook.com/quach.thetruong.7/"
+      My journey, my studies, my memories 🌟
+    # - name: github
+    #   url: "https://github.com/quachthetruong"
+    # - name: facebook
+    #   url: "https://www.facebook.com/quach.thetruong.7/"
     # - name: linkedin
 
+  # socialIcons:
   editPost:
     URL: "mailto://qtt153759@gmail.com?subject=Suggesting changes for "
     Text: "Suggest Changes" # edit text

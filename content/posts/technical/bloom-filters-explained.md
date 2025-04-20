@@ -1,6 +1,6 @@
 ---
 title: "Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution"
-date: 2024-12-23T17:29:51+07:00
+date: 2025-04-18T17:29:51+07:00
 tags: ["math", "computer science"]
 ---
 
@@ -36,7 +36,7 @@ That’s the power of the **Bloom Filter**.
 
 Bloom filters are quietly at the heart of many systems:
 
-- LSM trees, the foundation of modern NoSQL databases like Apache Cassandra, use Bloom filters to skip disk reads — asking:
+- LSM trees, the foundation of modern NoSQL databases like Apache Cassandra, MongoDB, use Bloom filters to skip disk reads — asking:
 
 > “Does this file probably contain the key?”
 
@@ -191,7 +191,7 @@ Suppose we have an array of `m` bits, all starting as 0.
 Now we flip 1 random bit to 1.
 The chance that a specific bit stays 0 is:
 
-<div style="display: inline-block; background-color: #808080; width: 25rem; height: 4rem;padding-left: 1rem;
+<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem;
 align-items: center; display:flex; border-radius: 8px;">
 <img src="https://latex.codecogs.com/svg.latex?\space\color{white}P[\text{bit = 0 after 1 flip}] = 1 - \frac{1}{m}
 " title="P[\text{bit = 0 after 1 flip}] " />
@@ -205,7 +205,7 @@ We insert `n` elements, each hashed with `k` functions. So we flip bits `k × n`
 
 The probability that a specific bit is still 0 after all those flips is:
 
-<div style="display: inline-block; background-color: #808080; width: 25rem; height: 4rem;padding-left: 1rem;
+<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem;
 align-items: center; display:flex; border-radius: 8px;"><img src="https://latex.codecogs.com/svg.latex?\space\color{white}P[\text{bit = 0 after } kn \text{ flips}] = \left(1 - \frac{1}{m} \right)^{kn}" title="P[\text{bit = 0 after } kn \text{ flips}] " />
 </div>
 
@@ -213,21 +213,21 @@ align-items: center; display:flex; border-radius: 8px;"><img src="https://latex.
 
 When `m` is large and `kn` is not too huge, we can approximate this with the exponential function:
 
-<div style="display: inline-block; background-color: #808080; width: 25rem; height: 4rem;padding-left: 1rem;
+<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem;
 align-items: center; display:flex; border-radius: 8px;"><img src="https://latex.codecogs.com/svg.latex?\space\color{white}
 P[\text{bit = 0 after } kn \text{ flips}] = \left(1 - \frac{1}{m} \right)^{kn} \approx e^{-kn/m}" title="\left(1 - \frac{1}{m} \right)^{kn} \approx e^{-kn/m}" />
 </div>
 
 This comes from the identity:
 
-<div style="display: inline-block; background-color: #808080; width: 25rem; height: 4rem;padding-left: 1rem;
+<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem;
 align-items: center; display:flex; border-radius: 8px;">
 <img src="https://latex.codecogs.com/svg.latex?\space\color{white}\lim_{m \to \infty} \left(1 - \frac{1}{m} \right)^m = \frac{1}{e}" title="\lim_{m \to \infty} \left(1 - \frac{1}{m} \right)^m = \frac{1}{e}" />
 </div>
 
 #### Step 4: Probability Bit is 1 (i.e. Flipped at Least Once)
 
-<div style="display: inline-block; background-color: #808080; width: 25rem; height: 4rem;padding-left: 1rem;
+<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem;
 align-items: center; display:flex; border-radius: 8px;"><img src="https://latex.codecogs.com/svg.latex?\space\color{white}P[\text{bit = 1}] \approx 1 - e^{-kn/m}" title="P[\text{bit = 1}] \approx 1 - e^{-kn/m}" />
 </div>
 
@@ -237,7 +237,7 @@ This tells us how likely a bit is to be 1 after inserting `n` elements.
 
 Now, suppose we query a new element that wasn’t inserted. Its `k` hash functions give us `k` bit positions. The probability that all those k bits are already 1 — just by chance — is:
 
-<div style="display: inline-block; background-color: #808080; width: 25rem; height: 4rem;padding-left: 1rem;
+<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem;
 align-items: center; display:flex; border-radius: 8px;"><img src="https://latex.codecogs.com/svg.latex?\space\color{white}P[\text{false positive}] \approx \left(1 - e^{-kn/m} \right)^k" title="P[\text{false positive}] \approx \left(1 - e^{-kn/m} \right)^k" />
 </div>
 

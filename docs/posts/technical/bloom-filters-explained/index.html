@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution | TruongQuach</title>
+<title>Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution | Quach</title>
 <meta name="keywords" content="math, computer science">
 <meta name="description" content="Part 1: Motivation
 How do we check if something is in a set — fast?
@@ -65,7 +65,7 @@ What if a structure could:">
 
     </style>
 </noscript><meta property="og:url" content="https://quachthetruong.github.io/posts/technical/bloom-filters-explained/">
-  <meta property="og:site_name" content="TruongQuach">
+  <meta property="og:site_name" content="Quach">
   <meta property="og:title" content="Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution">
   <meta property="og:description" content="Part 1: Motivation How do we check if something is in a set — fast? The simplest way is a List:
 if x in items: ... But this is O(n) — too slow for large-scale systems.
@@ -74,8 +74,8 @@ So what if we trade a little accuracy for massive savings? What if a structure c
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-12-23T17:29:51+07:00">
-    <meta property="article:modified_time" content="2024-12-23T17:29:51+07:00">
+    <meta property="article:published_time" content="2025-04-18T17:29:51+07:00">
+    <meta property="article:modified_time" content="2025-04-18T17:29:51+07:00">
     <meta property="article:tag" content="Math">
     <meta property="article:tag" content="Computer Science">
       <meta property="og:image" content="https://quachthetruong.github.io/papermod-cover.png">
@@ -124,11 +124,11 @@ What if a structure could:">
   "keywords": [
     "math", "computer science"
   ],
-  "articleBody": "Part 1: Motivation How do we check if something is in a set — fast? The simplest way is a List:\nif x in items: ... But this is O(n) — too slow for large-scale systems.\nA HashSet improves to O(1) lookups on average, but it stores the full elements, requiring more memory than raw data — especially for strings or objects.\nSo what if we trade a little accuracy for massive savings? What if a structure could:\nUse only ~9.6 bits per element (significantly smaller than storing object or string),\nBe wrong only 1% of the time (false positives),\nAnd never say “no” to something that’s truly there?\nThat’s the power of the Bloom Filter.\nWhere is it used? Bloom filters are quietly at the heart of many systems:\nLSM trees, the foundation of modern NoSQL databases like Apache Cassandra, use Bloom filters to skip disk reads — asking: “Does this file probably contain the key?”\nPlatforms like Quora, Medium, and Yahoo use Bloom filters to:\nPrevent duplicate content,\nAvoid redundant processing,\nSpeed up internal caching systems.\nEven if you don’t see them — Bloom filters are working behind the scenes, making large systems fast and efficient.\nPart 2: What is a false positive? (Definition + Example) What is a false positive? ✅ When you check an element that was inserted, the Bloom filter says “yes” — that’s a true positive, and it’s 100% guaranteed correct.\n⚠️ But sometimes it says “yes” to something that was never inserted — that’s a false positive.\nA false positive happens when a new element matches the bit pattern of others — even though it was never added.\nThe filter sees all bits set and says “Probably yes” — but it’s wrong.\nThat’s the trade-off for speed and space — and you’ll see it clearly in the next example.\nHow does it work? A Bloom filter is built with:\nm: a bit array of length m, all bits start at 0\nk: k independent hash functions\nn: number of elements inserted\nTo insert an element O(1):\nHash it using all k functions\nFlip the corresponding k bits to 1\nTo check membership O(1):\nHash the element using the same k functions\nIf any of the k bits is 0 → the element is definitely not in the set\nIf all are 1 → the element is possibly in the set (could be a false positive)\nExample: When a False Positive Happens Let’s step through a small Bloom filter:\nSetup: m = 10 (bit array of size 10)\nk = 3 hash functions\nInserted elements: ‘apple’ and ‘banana’ so n = 2\nStart with an empty bit array:\nInitial: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] Step 1: Insert ‘apple’ Let’s say:\nh₁(apple) = 2\nh₂(apple) = 4\nh₃(apple) = 7\nUpdate the bit array:\nAfter insert apple: [0, 0, 1, 0, 1, 0, 0, 1, 0, 0] Step 2: Insert ‘banana’ Let’s say:\nh₁(banana) = 1\nh₂(banana) = 4\nh₃(banana) = 8\nUpdate the bit array:\nAfter insert banana: [0, 1, 1, 0, 1, 0, 0, 1, 1, 0] Step 3: Check ‘banana’ (True Positive) h₁(banana) = 1 → bit is 1\nh₂(banana) = 4 → bit is 1\nh₃(banana) = 8 → bit is 1\nAll bits are 1 → Bloom filter says “Yes” → ✅ correct!\nStep 4: Check ‘mango’ (False Positive) h₁(mango) = 2\nh₂(mango) = 4\nh₃(mango) = 7\nCheck bits:\n2 → 1 ✅\n4 → 1 ✅\n7 → 1 ✅\nBloom filter says “Yes”, but ‘mango’ was never inserted → ❌ false positive\nThis happens because ‘apple’ and ‘banana’ already set those bits.\nPart 3: Mathematical Proof Okay — now you understand what a false positive is. Let’s take it a step deeper and explore the probability theory behind Bloom filters.\nDon’t worry — it only uses basic math that every student learns in university. We’ll walk through this step-by-step, keeping things intuitive.\nWhat is our goal? We want to answer:\nWhat’s the probability that a new element (not in the set) returns a false positive?\nThat means: all the k bits checked during the query are already 1— even though the element was never inserted, not even once among the n inserted items.\nStep 1: Probability a Bit is Still 0 After One Flip Suppose we have an array of m bits, all starting as 0. Now we flip 1 random bit to 1. The chance that a specific bit stays 0 is:\nWhy? Because we only had a 1/m chance to hit it.\nStep 2: We Perform k × n Bit Flips We insert n elements, each hashed with k functions. So we flip bits k × n times.\nThe probability that a specific bit is still 0 after all those flips is:\nStep 3: Exponential Limit Approximation When m is large and kn is not too huge, we can approximate this with the exponential function:\nThis comes from the identity:\nStep 4: Probability Bit is 1 (i.e. Flipped at Least Once) This tells us how likely a bit is to be 1 after inserting n elements.\nStep 5: False Positive = All k Bits Are 1 Now, suppose we query a new element that wasn’t inserted. Its k hash functions give us k bit positions. The probability that all those k bits are already 1 — just by chance — is:\nAnd that’s the final formula for Bloom filter false positives.\nBloom Filter Example: 1 Million Items (n = 1,000,000) Size per element (m/n) Total Size Hash Functions (k) False Positive Rate 6.25 bits 0.78 MB 4 4.99% 7.5 bits 0.94 MB 5 2.70% 9.58 bits 1.20 MB 6 1.00% 12.5 bits 1.56 MB 8 0.25% Part 4: What’s Next — Other Smart Probabilistic Structures for Big Data Problems Bloom filters solve set membership efficiently — but what about other fundamental questions in computer science?\nHow many unique users have viewed this video? → HyperLogLog\nHow many times did user X access this page? → Count-Min Sketch\nWhat are the 50th, 90th, and 99th percentiles of the measured latencies? → t-digest\nWant more? → Explore more probabilistic data structures.\nReferences: https://www.amazon.com/Probabilistic-Data-Structures-Algorithms-Applications/dp/3748190484 https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures https://brilliant.org/wiki/bloom-filter/ https://redis.io/docs/latest/develop/data-types/probabilistic/ https://en.wikipedia.org/wiki/Bloom_filter ",
-  "wordCount" : "1035",
+  "articleBody": "Part 1: Motivation How do we check if something is in a set — fast? The simplest way is a List:\nif x in items: ... But this is O(n) — too slow for large-scale systems.\nA HashSet improves to O(1) lookups on average, but it stores the full elements, requiring more memory than raw data — especially for strings or objects.\nSo what if we trade a little accuracy for massive savings? What if a structure could:\nUse only ~9.6 bits per element (significantly smaller than storing object or string),\nBe wrong only 1% of the time (false positives),\nAnd never say “no” to something that’s truly there?\nThat’s the power of the Bloom Filter.\nWhere is it used? Bloom filters are quietly at the heart of many systems:\nLSM trees, the foundation of modern NoSQL databases like Apache Cassandra, MongoDB, use Bloom filters to skip disk reads — asking: “Does this file probably contain the key?”\nPlatforms like Quora, Medium, and Yahoo use Bloom filters to:\nPrevent duplicate content,\nAvoid redundant processing,\nSpeed up internal caching systems.\nEven if you don’t see them — Bloom filters are working behind the scenes, making large systems fast and efficient.\nPart 2: What is a false positive? (Definition + Example) What is a false positive? ✅ When you check an element that was inserted, the Bloom filter says “yes” — that’s a true positive, and it’s 100% guaranteed correct.\n⚠️ But sometimes it says “yes” to something that was never inserted — that’s a false positive.\nA false positive happens when a new element matches the bit pattern of others — even though it was never added.\nThe filter sees all bits set and says “Probably yes” — but it’s wrong.\nThat’s the trade-off for speed and space — and you’ll see it clearly in the next example.\nHow does it work? A Bloom filter is built with:\nm: a bit array of length m, all bits start at 0\nk: k independent hash functions\nn: number of elements inserted\nTo insert an element O(1):\nHash it using all k functions\nFlip the corresponding k bits to 1\nTo check membership O(1):\nHash the element using the same k functions\nIf any of the k bits is 0 → the element is definitely not in the set\nIf all are 1 → the element is possibly in the set (could be a false positive)\nExample: When a False Positive Happens Let’s step through a small Bloom filter:\nSetup: m = 10 (bit array of size 10)\nk = 3 hash functions\nInserted elements: ‘apple’ and ‘banana’ so n = 2\nStart with an empty bit array:\nInitial: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] Step 1: Insert ‘apple’ Let’s say:\nh₁(apple) = 2\nh₂(apple) = 4\nh₃(apple) = 7\nUpdate the bit array:\nAfter insert apple: [0, 0, 1, 0, 1, 0, 0, 1, 0, 0] Step 2: Insert ‘banana’ Let’s say:\nh₁(banana) = 1\nh₂(banana) = 4\nh₃(banana) = 8\nUpdate the bit array:\nAfter insert banana: [0, 1, 1, 0, 1, 0, 0, 1, 1, 0] Step 3: Check ‘banana’ (True Positive) h₁(banana) = 1 → bit is 1\nh₂(banana) = 4 → bit is 1\nh₃(banana) = 8 → bit is 1\nAll bits are 1 → Bloom filter says “Yes” → ✅ correct!\nStep 4: Check ‘mango’ (False Positive) h₁(mango) = 2\nh₂(mango) = 4\nh₃(mango) = 7\nCheck bits:\n2 → 1 ✅\n4 → 1 ✅\n7 → 1 ✅\nBloom filter says “Yes”, but ‘mango’ was never inserted → ❌ false positive\nThis happens because ‘apple’ and ‘banana’ already set those bits.\nPart 3: Mathematical Proof Okay — now you understand what a false positive is. Let’s take it a step deeper and explore the probability theory behind Bloom filters.\nDon’t worry — it only uses basic math that every student learns in university. We’ll walk through this step-by-step, keeping things intuitive.\nWhat is our goal? We want to answer:\nWhat’s the probability that a new element (not in the set) returns a false positive?\nThat means: all the k bits checked during the query are already 1— even though the element was never inserted, not even once among the n inserted items.\nStep 1: Probability a Bit is Still 0 After One Flip Suppose we have an array of m bits, all starting as 0. Now we flip 1 random bit to 1. The chance that a specific bit stays 0 is:\nWhy? Because we only had a 1/m chance to hit it.\nStep 2: We Perform k × n Bit Flips We insert n elements, each hashed with k functions. So we flip bits k × n times.\nThe probability that a specific bit is still 0 after all those flips is:\nStep 3: Exponential Limit Approximation When m is large and kn is not too huge, we can approximate this with the exponential function:\nThis comes from the identity:\nStep 4: Probability Bit is 1 (i.e. Flipped at Least Once) This tells us how likely a bit is to be 1 after inserting n elements.\nStep 5: False Positive = All k Bits Are 1 Now, suppose we query a new element that wasn’t inserted. Its k hash functions give us k bit positions. The probability that all those k bits are already 1 — just by chance — is:\nAnd that’s the final formula for Bloom filter false positives.\nBloom Filter Example: 1 Million Items (n = 1,000,000) Size per element (m/n) Total Size Hash Functions (k) False Positive Rate 6.25 bits 0.78 MB 4 4.99% 7.5 bits 0.94 MB 5 2.70% 9.58 bits 1.20 MB 6 1.00% 12.5 bits 1.56 MB 8 0.25% Part 4: What’s Next — Other Smart Probabilistic Structures for Big Data Problems Bloom filters solve set membership efficiently — but what about other fundamental questions in computer science?\nHow many unique users have viewed this video? → HyperLogLog\nHow many times did user X access this page? → Count-Min Sketch\nWhat are the 50th, 90th, and 99th percentiles of the measured latencies? → t-digest\nWant more? → Explore more probabilistic data structures.\nReferences: https://www.amazon.com/Probabilistic-Data-Structures-Algorithms-Applications/dp/3748190484 https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures https://brilliant.org/wiki/bloom-filter/ https://redis.io/docs/latest/develop/data-types/probabilistic/ https://en.wikipedia.org/wiki/Bloom_filter ",
+  "wordCount" : "1036",
   "inLanguage": "en",
-  "image": "https://quachthetruong.github.io/papermod-cover.png","datePublished": "2024-12-23T17:29:51+07:00",
-  "dateModified": "2024-12-23T17:29:51+07:00",
+  "image": "https://quachthetruong.github.io/papermod-cover.png","datePublished": "2025-04-18T17:29:51+07:00",
+  "dateModified": "2025-04-18T17:29:51+07:00",
   "author":{
     "@type": "Person",
     "name": "Truong"
@@ -139,7 +139,7 @@ What if a structure could:">
   },
   "publisher": {
     "@type": "Organization",
-    "name": "TruongQuach",
+    "name": "Quach",
     "logo": {
       "@type": "ImageObject",
       "url": "https://quachthetruong.github.io/favicon.ico"
@@ -164,7 +164,7 @@ What if a structure could:">
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://quachthetruong.github.io/" accesskey="h" title="TruongQuach (Alt + H)">TruongQuach</a>
+            <a href="https://quachthetruong.github.io/" accesskey="h" title="Quach (Alt + H)">Quach</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -220,7 +220,7 @@ What if a structure could:">
     <h1 class="post-title entry-hint-parent">
       Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution
     </h1>
-    <div class="post-meta"><span title='2024-12-23 17:29:51 +0700 +07'>December 23, 2024</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Truong&nbsp;|&nbsp;<a href="mailto://qtt153759@gmail.com?subject=Suggesting%20changes%20for%20/posts/technical/bloom-filters-explained.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2025-04-18 17:29:51 +0700 +07'>April 18, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Truong&nbsp;|&nbsp;<a href="mailto://qtt153759@gmail.com?subject=Suggesting%20changes%20for%20/posts/technical/bloom-filters-explained.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
   </header> <div class="toc">
@@ -320,7 +320,7 @@ but it stores the full elements, requiring <strong>more memory than raw data</st
 <h3 id="where-is-it-used">Where is it used?<a hidden class="anchor" aria-hidden="true" href="#where-is-it-used">#</a></h3>
 <p>Bloom filters are quietly at the heart of many systems:</p>
 <ul>
-<li>LSM trees, the foundation of modern NoSQL databases like Apache Cassandra, use Bloom filters to skip disk reads — asking:</li>
+<li>LSM trees, the foundation of modern NoSQL databases like Apache Cassandra, MongoDB, use Bloom filters to skip disk reads — asking:</li>
 </ul>
 <blockquote>
 <p>“Does this file probably contain the key?”</p></blockquote>
@@ -483,7 +483,7 @@ even though the element was never inserted, not even once among the <code>n</cod
 <p>Suppose we have an array of <code>m</code> bits, all starting as 0.
 Now we flip 1 random bit to 1.
 The chance that a specific bit stays 0 is:</p>
-<div style="display: inline-block; background-color: #808080; width: 25rem; height: 4rem;padding-left: 1rem;
+<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem;
 align-items: center; display:flex; border-radius: 8px;">
 <img src="https://latex.codecogs.com/svg.latex?\space\color{white}P[\text{bit = 0 after 1 flip}] = 1 - \frac{1}{m}
 " title="P[\text{bit = 0 after 1 flip}] " />
@@ -492,28 +492,28 @@ align-items: center; display:flex; border-radius: 8px;">
 <h4 id="step-2-we-perform-k--n-bit-flips">Step 2: We Perform <code>k × n</code> Bit Flips<a hidden class="anchor" aria-hidden="true" href="#step-2-we-perform-k--n-bit-flips">#</a></h4>
 <p>We insert <code>n</code> elements, each hashed with <code>k</code> functions. So we flip bits <code>k × n</code> times.</p>
 <p>The probability that a specific bit is still 0 after all those flips is:</p>
-<div style="display: inline-block; background-color: #808080; width: 25rem; height: 4rem;padding-left: 1rem;
+<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem;
 align-items: center; display:flex; border-radius: 8px;"><img src="https://latex.codecogs.com/svg.latex?\space\color{white}P[\text{bit = 0 after } kn \text{ flips}] = \left(1 - \frac{1}{m} \right)^{kn}" title="P[\text{bit = 0 after } kn \text{ flips}] " />
 </div>
 <h4 id="step-3-exponential-limit-approximation">Step 3: Exponential Limit Approximation<a hidden class="anchor" aria-hidden="true" href="#step-3-exponential-limit-approximation">#</a></h4>
 <p>When <code>m</code> is large and <code>kn</code> is not too huge, we can approximate this with the exponential function:</p>
-<div style="display: inline-block; background-color: #808080; width: 25rem; height: 4rem;padding-left: 1rem;
+<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem;
 align-items: center; display:flex; border-radius: 8px;"><img src="https://latex.codecogs.com/svg.latex?\space\color{white}
 P[\text{bit = 0 after } kn \text{ flips}] = \left(1 - \frac{1}{m} \right)^{kn} \approx e^{-kn/m}" title="\left(1 - \frac{1}{m} \right)^{kn} \approx e^{-kn/m}" />
 </div>
 <p>This comes from the identity:</p>
-<div style="display: inline-block; background-color: #808080; width: 25rem; height: 4rem;padding-left: 1rem;
+<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem;
 align-items: center; display:flex; border-radius: 8px;">
 <img src="https://latex.codecogs.com/svg.latex?\space\color{white}\lim_{m \to \infty} \left(1 - \frac{1}{m} \right)^m = \frac{1}{e}" title="\lim_{m \to \infty} \left(1 - \frac{1}{m} \right)^m = \frac{1}{e}" />
 </div>
 <h4 id="step-4-probability-bit-is-1-ie-flipped-at-least-once">Step 4: Probability Bit is 1 (i.e. Flipped at Least Once)<a hidden class="anchor" aria-hidden="true" href="#step-4-probability-bit-is-1-ie-flipped-at-least-once">#</a></h4>
-<div style="display: inline-block; background-color: #808080; width: 25rem; height: 4rem;padding-left: 1rem;
+<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem;
 align-items: center; display:flex; border-radius: 8px;"><img src="https://latex.codecogs.com/svg.latex?\space\color{white}P[\text{bit = 1}] \approx 1 - e^{-kn/m}" title="P[\text{bit = 1}] \approx 1 - e^{-kn/m}" />
 </div>
 <p>This tells us how likely a bit is to be 1 after inserting <code>n</code> elements.</p>
 <h4 id="step-5-false-positive--all-k-bits-are-1">Step 5: False Positive = All <code>k</code> Bits Are 1<a hidden class="anchor" aria-hidden="true" href="#step-5-false-positive--all-k-bits-are-1">#</a></h4>
 <p>Now, suppose we query a new element that wasn’t inserted. Its <code>k</code> hash functions give us <code>k</code> bit positions. The probability that all those k bits are already 1 — just by chance — is:</p>
-<div style="display: inline-block; background-color: #808080; width: 25rem; height: 4rem;padding-left: 1rem;
+<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem;
 align-items: center; display:flex; border-radius: 8px;"><img src="https://latex.codecogs.com/svg.latex?\space\color{white}P[\text{false positive}] \approx \left(1 - e^{-kn/m} \right)^k" title="P[\text{false positive}] \approx \left(1 - e^{-kn/m} \right)^k" />
 </div>
 <p>And that’s the final formula for Bloom filter false positives.</p>
@@ -679,7 +679,7 @@ align-items: center; display:flex; border-radius: 8px;"><img src="https://latex.
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://quachthetruong.github.io/">TruongQuach</a></span> · 
+        <span>&copy; 2025 <a href="https://quachthetruong.github.io/">Quach</a></span> · 
 
     <span>
         Powered by

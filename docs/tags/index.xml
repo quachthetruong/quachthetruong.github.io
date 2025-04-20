@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on TruongQuach</title>
+    <title>Tags on Quach</title>
     <link>https://quachthetruong.github.io/tags/</link>
-    <description>Recent content in Tags on TruongQuach</description>
+    <description>Recent content in Tags on Quach</description>
     <image>
-      <title>TruongQuach</title>
+      <title>Quach</title>
       <url>https://quachthetruong.github.io/papermod-cover.png</url>
       <link>https://quachthetruong.github.io/papermod-cover.png</link>
     </image>
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 23 Dec 2024 17:29:51 +0700</lastBuildDate>
+    <lastBuildDate>Fri, 18 Apr 2025 17:29:51 +0700</lastBuildDate>
     <atom:link href="https://quachthetruong.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Computer Science</title>
       <link>https://quachthetruong.github.io/tags/computer-science/</link>
-      <pubDate>Mon, 23 Dec 2024 17:29:51 +0700</pubDate>
+      <pubDate>Fri, 18 Apr 2025 17:29:51 +0700</pubDate>
       <guid>https://quachthetruong.github.io/tags/computer-science/</guid>
       <description></description>
     </item>
     <item>
       <title>Math</title>
       <link>https://quachthetruong.github.io/tags/math/</link>
-      <pubDate>Mon, 23 Dec 2024 17:29:51 +0700</pubDate>
+      <pubDate>Fri, 18 Apr 2025 17:29:51 +0700</pubDate>
       <guid>https://quachthetruong.github.io/tags/math/</guid>
       <description></description>
     </item>
