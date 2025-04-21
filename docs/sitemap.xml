@@ -2,22 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://quachthetruong.github.io/posts/technical/bloom-filters-explained/</loc>
-    <lastmod>2025-04-18T17:29:51+07:00</lastmod>
-  </url><url>
     <loc>https://quachthetruong.github.io/tags/computer-science/</loc>
-    <lastmod>2025-04-18T17:29:51+07:00</lastmod>
+    <lastmod>2025-04-21T17:29:51+07:00</lastmod>
   </url><url>
     <loc>https://quachthetruong.github.io/tags/math/</loc>
-    <lastmod>2025-04-18T17:29:51+07:00</lastmod>
+    <lastmod>2025-04-21T17:29:51+07:00</lastmod>
   </url><url>
     <loc>https://quachthetruong.github.io/posts/</loc>
-    <lastmod>2025-04-18T17:29:51+07:00</lastmod>
+    <lastmod>2025-04-21T17:29:51+07:00</lastmod>
   </url><url>
     <loc>https://quachthetruong.github.io/</loc>
-    <lastmod>2025-04-18T17:29:51+07:00</lastmod>
+    <lastmod>2025-04-21T17:29:51+07:00</lastmod>
   </url><url>
     <loc>https://quachthetruong.github.io/tags/</loc>
+    <lastmod>2025-04-21T17:29:51+07:00</lastmod>
+  </url><url>
+    <loc>https://quachthetruong.github.io/posts/technical/quick-sort-time-complexity/</loc>
+    <lastmod>2025-04-21T17:29:51+07:00</lastmod>
+  </url><url>
+    <loc>https://quachthetruong.github.io/posts/technical/bloom-filters-explained/</loc>
     <lastmod>2025-04-18T17:29:51+07:00</lastmod>
   </url><url>
     <loc>https://quachthetruong.github.io/archives/</loc>

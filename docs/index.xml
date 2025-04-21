@@ -11,8 +11,16 @@
     </image>
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 18 Apr 2025 17:29:51 +0700</lastBuildDate>
+    <lastBuildDate>Mon, 21 Apr 2025 17:29:51 +0700</lastBuildDate>
     <atom:link href="https://quachthetruong.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why the Average Complexity of QuickSort is O(nlogn)?</title>
+      <link>https://quachthetruong.github.io/posts/technical/quick-sort-time-complexity/</link>
+      <pubDate>Mon, 21 Apr 2025 17:29:51 +0700</pubDate>
+      <guid>https://quachthetruong.github.io/posts/technical/quick-sort-time-complexity/</guid>
+      <description>&lt;p&gt;For most developers, QuickSort is a fast and efficient sorting algorithm with a time complexity of &lt;code&gt;O(nlogn)&lt;/code&gt;. This makes it significantly better than other common sorting algorithms, like Selection Sort or Bubble Sort, which have a time complexity of &lt;code&gt;O(n²)&lt;/code&gt;. However, the question remains: &lt;strong&gt;Why is the average time complexity of QuickSort O(nlogn)?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In this blog, we will delve deep into the mathematical and probabilistic principles that explain this efficiency, helping you understand the underlying reasons why QuickSort is faster than other algorithms on average.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution</title>
       <link>https://quachthetruong.github.io/posts/technical/bloom-filters-explained/</link>
