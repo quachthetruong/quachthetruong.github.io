@@ -265,7 +265,7 @@ Bloom filters solve set membership efficiently — but what about other fundamen
 Want more?
 → Explore more [probabilistic data structures](https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures).
 
-### References:
+### References
 
 - https://www.amazon.com/Probabilistic-Data-Structures-Algorithms-Applications/dp/3748190484
 - https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures

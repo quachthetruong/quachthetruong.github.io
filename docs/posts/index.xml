@@ -11,8 +11,17 @@
     </image>
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 21 Apr 2025 17:29:51 +0700</lastBuildDate>
+    <lastBuildDate>Thu, 24 Apr 2025 17:29:51 +0700</lastBuildDate>
     <atom:link href="https://quachthetruong.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Computers Do Differentiation?</title>
+      <link>https://quachthetruong.github.io/posts/technical/auto-differentiation/</link>
+      <pubDate>Thu, 24 Apr 2025 17:29:51 +0700</pubDate>
+      <guid>https://quachthetruong.github.io/posts/technical/auto-differentiation/</guid>
+      <description>&lt;p&gt;Differentiation is a key concept in machine learning, especially when optimizing functions like loss functions in neural networks. It helps us find the minimum of these functions, which is crucial for tasks like training a model. But have you ever wondered how popular libraries like &lt;strong&gt;TensorFlow&lt;/strong&gt; and &lt;strong&gt;PyTorch&lt;/strong&gt; perform differentiation? Let’s break it down!&lt;/p&gt;
+&lt;h2 id=&#34;1-manual-differentiation-the-old-school-method&#34;&gt;1. Manual Differentiation: The Old-School Method&lt;/h2&gt;
+&lt;p&gt;In school, we learn how to manually compute derivatives using calculus. You apply a set of rules to functions to find how they change with respect to their inputs. For example, given a simple function like:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Why the Average Complexity of QuickSort is O(nlogn)?</title>
       <link>https://quachthetruong.github.io/posts/technical/quick-sort-time-complexity/</link>

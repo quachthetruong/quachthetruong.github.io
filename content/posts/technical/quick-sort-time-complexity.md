@@ -77,13 +77,13 @@ Now, we define a random variable `𝑋𝑖𝑗` that equals `1` if the algorithm
 `i-th` smallest and `j-th` smallest elements in **the original array**, and `0` if it does not. Let `𝑋` denote the total number of comparisons made by the algorithm. Since the algorithm never compares the same pair of elements twice, we have:
 
 <div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;">
-    <img src="https://latex.codecogs.com/svg.latex?X = \sum_{i=0}^{n-1} \left( \sum_{j=i+1}^{n} X_{ij} \right)" title="X = \sum_{i=0}^{n-1} \left( \sum_{j=i+1}^{n} X_{ij} \right)" />
+    <img src="https://latex.codecogs.com/svg.latex?\color{white}X = \sum_{i=0}^{n-1} \left( \sum_{j=i+1}^{n} X_{ij} \right)" title="X = \sum_{i=0}^{n-1} \left( \sum_{j=i+1}^{n} X_{ij} \right)" />
 </div>
 
 Therefore, the expected value of `𝑋`, denoted `E[𝑋]`, is:
 
 <div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;">
-    <img src="https://latex.codecogs.com/svg.latex?E[X] = \sum_{i=0}^{n-1} \left( \sum_{j=i+1}^{n} E[X_{ij}] \right)" title="E[X] = \sum_{i=0}^{n-1} \left( \sum_{j=i+1}^{n} E[X_{ij}] \right)" />
+    <img src="https://latex.codecogs.com/svg.latex?\color{white}E[X] = \sum_{i=0}^{n-1} \left( \sum_{j=i+1}^{n} E[X_{ij}] \right)" title="E[X] = \sum_{i=0}^{n-1} \left( \sum_{j=i+1}^{n} E[X_{ij}] \right)" />
 </div>
 
 ### Understanding `E[𝑋𝑖𝑗]`
@@ -106,25 +106,25 @@ At each step, the probability that `𝑋𝑖𝑗 = 1` (i.e., we compare `e𝑖` 
 `𝑋𝑖𝑗 = 1` is:
 
 <div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;">
-    <img src="https://latex.codecogs.com/svg.latex?P(X_{ij} = 1) = \frac{2}{(j-i+1)}" title="P(X_{ij}=1) = \frac{2}{(j-i+1)}" />
+    <img src="https://latex.codecogs.com/svg.latex?\color{white}P(X_{ij} = 1) = \frac{2}{(j-i+1)}" title="P(X_{ij}=1) = \frac{2}{(j-i+1)}" />
 </div>
 
 ### Summing Up the Expected Value
 
 <div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;">
-    <img src="https://latex.codecogs.com/svg.latex?E[X_{ij}] = \frac{2\cdot{1} + (j-i-1)\cdot{0}}{(j-i+1)} = \frac{2}{j-i+1}" title="E[X_{ij}] = \frac{2}{(j-i+1)}" />
+    <img src="https://latex.codecogs.com/svg.latex?\color{white}E[X_{ij}] = \frac{2\cdot{1} + (j-i-1)\cdot{0}}{(j-i+1)} = \frac{2}{j-i+1}" title="E[X_{ij}] = \frac{2}{(j-i+1)}" />
 </div>
 
 This means that for a given element `i`, it is compared to element `i+1` with probability `1`, to element `i+2` with probability `2/3`, to element `i+3` with probability `2/4`, and so on. Therefore, the expected value of X is:
 
 <div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;">
-    <img src="https://latex.codecogs.com/svg.latex?E[X] = 2 \cdot{\sum_{i=1}^{n-1} \left(\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+...+\frac{1}{n-i+1} \right)}" title="E[X] = \sum_{i=0}^{n-1} \left( \sum_{k=2}^{n-i+1} \frac{2}{n-i+1} \right)" />
+    <img src="https://latex.codecogs.com/svg.latex?\color{white}E[X] = 2 \cdot{\sum_{i=1}^{n-1} \left(\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+...+\frac{1}{n-i+1} \right)}" title="E[X] = \sum_{i=0}^{n-1} \left( \sum_{k=2}^{n-i+1} \frac{2}{n-i+1} \right)" />
 </div>
 
 The sum of the series `1 + 1/2 + 1/3 + ... + 1/n`, denoted `𝐻𝑛`, is called the **nth harmonic number**. This series grows logarithmically and can be approximated as:
 
 <div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;">
-    <img src="https://latex.codecogs.com/svg.latex?Hn = {\displaystyle \ln n+\gamma }" title="Hn = {\displaystyle \ln n+\gamma }" />
+    <img src="https://latex.codecogs.com/svg.latex?\color{white}Hn = {\displaystyle \ln n+\gamma }" title="Hn = {\displaystyle \ln n+\gamma }" />
 </div>
 
 `ln` is the natural logarithm and `γ` is the Euler-Mascheroni constant, approximately `0.577`. Since `γ` is a constant, it does not affect the overall growth rate of the sum. Therefore, in `Big-O` notation, we can express the growth of `𝐻𝑛` as `O(lnn)`, meaning that as n increases,the harmonic number grows logarithmically.
@@ -132,14 +132,14 @@ The sum of the series `1 + 1/2 + 1/3 + ... + 1/n`, denoted `𝐻𝑛`, is called
 Thus, we can bound the expected value of `𝑋` as:
 
 <div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;">
-    <img src="https://latex.codecogs.com/svg.latex?E[X] \leq 2\cdot{(n-1)} \cdot{(Hn - 1)} < 2 \cdot{\ln n \cdot{n}}" title="E[X] = (n+1) \cdot \sum_{k=2}^{n} \frac{2}{k} - 2(n-1)" />
+    <img src="https://latex.codecogs.com/svg.latex?\color{white}E[X] \leq 2\cdot{(n-1)} \cdot{(Hn - 1)} < 2 \cdot{\ln n \cdot{n}}" title="E[X] = (n+1) \cdot \sum_{k=2}^{n} \frac{2}{k} - 2(n-1)" />
 </div>
 
 ### Conclusion
 
 Through this blog, we’ve seen how QuickSort’s average complexity of `O(nlogn)` arises from the expected value, driven by the harmonic series. While QuickSort is often used as an example, many sorting algorithms can also be understood probabilistically, just like this. Whether or not you see this as essential knowledge, it’s an interesting and indispensable topic in understanding algorithm efficiency at a deeper level. The formulas and concepts we used may seem abstract, but they’re a powerful tool for analyzing and optimizing algorithms.
 
-### References:
+### References
 
 - https://www.cs.cmu.edu/afs/cs/academic/class/15451-s07/www/lecture_notes/lect0123.pdf
 - https://en.wikipedia.org/wiki/Harmonic_series_(mathematics)
