@@ -1,7 +1,7 @@
 ---
 title: "Xuyên Việt 2025"
 date: 2025-04-05T17:29:51+07:00
-tags: ["artificial intelligence", "math", "computer science"]
+tags: ["life", "travel"]
 ---
 
 Hành trình 21 ngày một mình xuyên Việt, từ Hà Nội đến Thành phố Hồ Chí Minh dọc theo con đường ven biển.
