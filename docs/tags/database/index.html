@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Math | Quach</title>
+<title>Database | Quach</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="Truong">
-<link rel="canonical" href="https://quachthetruong.github.io/tags/math/">
+<link rel="canonical" href="https://quachthetruong.github.io/tags/database/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://quachthetruong.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://quachthetruong.github.io/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="https://quachthetruong.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://quachthetruong.github.io/tags/math/index.xml">
-<link rel="alternate" hreflang="en" href="https://quachthetruong.github.io/tags/math/">
+<link rel="alternate" type="application/rss+xml" href="https://quachthetruong.github.io/tags/database/index.xml">
+<link rel="alternate" hreflang="en" href="https://quachthetruong.github.io/tags/database/">
 <noscript>
     <style>
         #theme-toggle,
@@ -28,15 +28,15 @@
         }
 
     </style>
-</noscript><meta property="og:url" content="https://quachthetruong.github.io/tags/math/">
+</noscript><meta property="og:url" content="https://quachthetruong.github.io/tags/database/">
   <meta property="og:site_name" content="Quach">
-  <meta property="og:title" content="Math">
+  <meta property="og:title" content="Database">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
       <meta property="og:image" content="https://quachthetruong.github.io/papermod-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://quachthetruong.github.io/papermod-cover.png">
-<meta name="twitter:title" content="Math">
+<meta name="twitter:title" content="Database">
 <meta name="twitter:description" content="">
 
 </head>
@@ -98,67 +98,23 @@
 <main class="main"> 
 <header class="page-header"><div class="breadcrumbs"><a href="https://quachthetruong.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://quachthetruong.github.io/tags/">Tags</a></div>
   <h1>
-    Math
+    Database
   </h1>
 </header>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Why the Average Complexity of Bucket sort is O(n)?
+    <h2 class="entry-hint-parent">How PostgreSQL Evaluates Execution Plans: Cost Estimation Deep Dive
     </h2>
   </header>
   <div class="entry-content">
-    <p>Part 1: Introduction and Code Bucket Sort is an efficient sorting algorithm when input values are uniformly distributed over a range. It works by distributing elements into different “buckets”, sorting each bucket, and then concatenating the results.
-Here’s a typical Python implementation where each bucket is sorted with Insertion Sort:
-def insertion_sort(bucket): for i in range(1, len(bucket)): key = bucket[i] j = i - 1 while j &gt;= 0 and bucket[j] &gt; key: bucket[j &#43; 1] = bucket[j] j -= 1 bucket[j &#43; 1] = key def bucket_sort(arr): n = len(arr) buckets = [[] for _ in range(n)] # Put array elements in different buckets for num in arr: bi = int(n * num) # assuming input numbers are in [0,1) buckets[bi].append(num) # Sort individual buckets using insertion sort for bucket in buckets: insertion_sort(bucket) # Concatenate all buckets into arr[] index = 0 for bucket in buckets: for num in bucket: arr[index] = num index &#43;= 1 Why Insertion Sort? Insertion sort is simple and efficient for small or nearly sorted lists. Since each bucket contains only a fraction of the input, sorting each bucket with insertion sort is fast.
+    <p>When diving deep into the EXPLAIN command, you already know what index scans, sequential scans, and hash joins are. But have you ever wondered how exactly the cost numbers are calculated? In this deep dive, we’ll explore the formulas behind PostgreSQL’s cost estimation for the three main scanning approaches: sequential scan, index scan, and bitmap heap scan.
+1. Cost-based Optimization and PostgreSQL Constants Consider this query:
+SELECT * FROM table_a ta JOIN table_b tb ON ta.id = tb.foreign_id WHERE ta.status = &#39;active&#39; AND tb.created_at &gt; &#39;2020-12-01&#39;; How would you approach this query? The intuitive flow would be: filter each table first, then join. Make tables smaller first, then start joining. Quite intuitive, right?
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-05-20 17:29:51 +0700 +07'>May 20, 2025</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Truong</footer>
-  <a class="entry-link" aria-label="post link to Why the Average Complexity of Bucket sort is O(n)?" href="https://quachthetruong.github.io/posts/technical/bucket-sort-time-complexity/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">How Computers Do Differentiation?
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Differentiation is a key concept in machine learning, especially when optimizing functions like loss functions in neural networks. It helps us find the minimum of these functions, which is crucial for tasks like training a model. But have you ever wondered how popular libraries like TensorFlow and PyTorch perform differentiation? Let’s break it down!
-1. Manual Differentiation: The Old-School Method In school, we learn how to manually compute derivatives using calculus. You apply a set of rules to functions to find how they change with respect to their inputs. For example, given a simple function like:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-04-24 17:29:51 +0700 +07'>April 24, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Truong</footer>
-  <a class="entry-link" aria-label="post link to How Computers Do Differentiation?" href="https://quachthetruong.github.io/posts/technical/auto-differentiation/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Why the Average Complexity of QuickSort is O(nlogn)?
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>For most developers, QuickSort is a fast and efficient sorting algorithm with a time complexity of O(nlogn). This makes it significantly better than other common sorting algorithms, like Selection Sort or Bubble Sort, which have a time complexity of O(n²). However, the question remains: Why is the average time complexity of QuickSort O(nlogn)?
-In this blog, we will delve deep into the mathematical and probabilistic principles that explain this efficiency, helping you understand the underlying reasons why QuickSort is faster than other algorithms on average.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-04-21 17:29:51 +0700 +07'>April 21, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Truong</footer>
-  <a class="entry-link" aria-label="post link to Why the Average Complexity of QuickSort is O(nlogn)?" href="https://quachthetruong.github.io/posts/technical/quick-sort-time-complexity/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Part 1: Motivation How do we check if something is in a set — fast? The simplest way is a List:
-if x in items: ... But this is O(n) — too slow for large-scale systems.
-A HashSet improves to O(1) lookups on average, but it stores the full elements, requiring more memory than raw data — especially for strings or objects.
-So what if we trade a little accuracy for massive savings? What if a structure could:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-04-18 17:29:51 +0700 +07'>April 18, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Truong</footer>
-  <a class="entry-link" aria-label="post link to Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution" href="https://quachthetruong.github.io/posts/technical/bloom-filters-explained/"></a>
+  <footer class="entry-footer"><span title='2025-10-01 10:00:00 +0700 +07'>October 1, 2025</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;Truong</footer>
+  <a class="entry-link" aria-label="post link to How PostgreSQL Evaluates Execution Plans: Cost Estimation Deep Dive" href="https://quachthetruong.github.io/posts/technical/postgres-cost-estimation/"></a>
 </article>
     </main>
     

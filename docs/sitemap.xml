@@ -3,18 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://quachthetruong.github.io/tags/computer-science/</loc>
-    <lastmod>2025-05-20T17:29:51+07:00</lastmod>
+    <lastmod>2025-10-01T10:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://quachthetruong.github.io/tags/math/</loc>
-    <lastmod>2025-05-20T17:29:51+07:00</lastmod>
+    <loc>https://quachthetruong.github.io/tags/database/</loc>
+    <lastmod>2025-10-01T10:00:00+07:00</lastmod>
+  </url><url>
+    <loc>https://quachthetruong.github.io/posts/technical/postgres-cost-estimation/</loc>
+    <lastmod>2025-10-01T10:00:00+07:00</lastmod>
   </url><url>
     <loc>https://quachthetruong.github.io/posts/</loc>
-    <lastmod>2025-05-20T17:29:51+07:00</lastmod>
+    <lastmod>2025-10-01T10:00:00+07:00</lastmod>
   </url><url>
     <loc>https://quachthetruong.github.io/</loc>
-    <lastmod>2025-05-20T17:29:51+07:00</lastmod>
+    <lastmod>2025-10-01T10:00:00+07:00</lastmod>
   </url><url>
     <loc>https://quachthetruong.github.io/tags/</loc>
+    <lastmod>2025-10-01T10:00:00+07:00</lastmod>
+  </url><url>
+    <loc>https://quachthetruong.github.io/tags/math/</loc>
     <lastmod>2025-05-20T17:29:51+07:00</lastmod>
   </url><url>
     <loc>https://quachthetruong.github.io/posts/technical/bucket-sort-time-complexity/</loc>
@@ -42,8 +48,6 @@
     <lastmod>2025-04-05T17:29:51+07:00</lastmod>
   </url><url>
     <loc>https://quachthetruong.github.io/archives/</loc>
-  </url><url>
-    <loc>https://quachthetruong.github.io/categories/</loc>
   </url><url>
     <loc>https://quachthetruong.github.io/search/</loc>
   </url><url>

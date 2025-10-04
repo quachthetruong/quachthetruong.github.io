@@ -11,8 +11,21 @@
     </image>
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 20 May 2025 17:29:51 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 01 Oct 2025 10:00:00 +0700</lastBuildDate>
     <atom:link href="https://quachthetruong.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How PostgreSQL Evaluates Execution Plans: Cost Estimation Deep Dive</title>
+      <link>https://quachthetruong.github.io/posts/technical/postgres-cost-estimation/</link>
+      <pubDate>Wed, 01 Oct 2025 10:00:00 +0700</pubDate>
+      <guid>https://quachthetruong.github.io/posts/technical/postgres-cost-estimation/</guid>
+      <description>&lt;p&gt;When diving deep into the &lt;code&gt;EXPLAIN&lt;/code&gt; command, you already know what index scans, sequential scans, and hash joins are. But have you ever wondered how exactly the cost numbers are calculated? In this deep dive, we&amp;rsquo;ll explore the formulas behind PostgreSQL&amp;rsquo;s cost estimation for the three main scanning approaches: sequential scan, index scan, and bitmap heap scan.&lt;/p&gt;
+&lt;h2 id=&#34;postgresql-cost-constants&#34;&gt;1. Cost-based Optimization and PostgreSQL Constants&lt;/h2&gt;
+&lt;p&gt;Consider this query:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; table_a ta
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;JOIN&lt;/span&gt; table_b tb &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; ta.id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tb.foreign_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; ta.status &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;active&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;AND&lt;/span&gt; tb.created_at &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2020-12-01&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;How would you approach this query? The intuitive flow would be: filter each table first, then join. Make tables smaller first, then start joining. Quite intuitive, right?&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Why the Average Complexity of Bucket sort is O(n)?</title>
       <link>https://quachthetruong.github.io/posts/technical/bucket-sort-time-complexity/</link>

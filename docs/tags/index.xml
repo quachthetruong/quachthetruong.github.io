@@ -11,13 +11,20 @@
     </image>
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 20 May 2025 17:29:51 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 01 Oct 2025 10:00:00 +0700</lastBuildDate>
     <atom:link href="https://quachthetruong.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Computer Science</title>
       <link>https://quachthetruong.github.io/tags/computer-science/</link>
-      <pubDate>Tue, 20 May 2025 17:29:51 +0700</pubDate>
+      <pubDate>Wed, 01 Oct 2025 10:00:00 +0700</pubDate>
       <guid>https://quachthetruong.github.io/tags/computer-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Database</title>
+      <link>https://quachthetruong.github.io/tags/database/</link>
+      <pubDate>Wed, 01 Oct 2025 10:00:00 +0700</pubDate>
+      <guid>https://quachthetruong.github.io/tags/database/</guid>
       <description></description>
     </item>
     <item>
