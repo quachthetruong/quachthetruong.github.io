@@ -19,7 +19,7 @@
       <pubDate>Wed, 01 Oct 2025 10:00:00 +0700</pubDate>
       <guid>https://quachthetruong.github.io/posts/technical/postgres-cost-estimation/</guid>
       <description>&lt;p&gt;When diving deep into the &lt;code&gt;EXPLAIN&lt;/code&gt; command, you already know what index scans, sequential scans, and hash joins are. But have you ever wondered how exactly the cost numbers are calculated? In this deep dive, we&amp;rsquo;ll explore the formulas behind PostgreSQL&amp;rsquo;s cost estimation for the three main scanning approaches: sequential scan, index scan, and bitmap heap scan.&lt;/p&gt;
-&lt;h2 id=&#34;postgresql-cost-constants&#34;&gt;1. Cost-based Optimization and PostgreSQL Constants&lt;/h2&gt;
+&lt;h2 id=&#34;postgresql-cost-constants&#34;&gt;1. Cost-based vs Rule-based&lt;/h2&gt;
 &lt;p&gt;Consider this query:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; table_a ta
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;JOIN&lt;/span&gt; table_b tb &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; ta.id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tb.foreign_id

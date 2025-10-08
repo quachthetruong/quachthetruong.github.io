@@ -124,11 +124,11 @@
   </header>
   <div class="entry-content">
     <p>When diving deep into the EXPLAIN command, you already know what index scans, sequential scans, and hash joins are. But have you ever wondered how exactly the cost numbers are calculated? In this deep dive, we’ll explore the formulas behind PostgreSQL’s cost estimation for the three main scanning approaches: sequential scan, index scan, and bitmap heap scan.
-1. Cost-based Optimization and PostgreSQL Constants Consider this query:
+1. Cost-based vs Rule-based Consider this query:
 SELECT * FROM table_a ta JOIN table_b tb ON ta.id = tb.foreign_id WHERE ta.status = &#39;active&#39; AND tb.created_at &gt; &#39;2020-12-01&#39;; How would you approach this query? The intuitive flow would be: filter each table first, then join. Make tables smaller first, then start joining. Quite intuitive, right?
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-10-01 10:00:00 +0700 +07'>October 1, 2025</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;Truong</footer>
+  <footer class="entry-footer"><span title='2025-10-01 10:00:00 +0700 +07'>October 1, 2025</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;Truong</footer>
   <a class="entry-link" aria-label="post link to How PostgreSQL Evaluates Execution Plans: Cost Estimation Deep Dive" href="https://quachthetruong.github.io/posts/technical/postgres-cost-estimation/"></a>
 </article>
 

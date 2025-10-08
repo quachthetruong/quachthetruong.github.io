@@ -6,7 +6,7 @@ tags: ["computer science", "database"]
 
 When diving deep into the `EXPLAIN` command, you already know what index scans, sequential scans, and hash joins are. But have you ever wondered how exactly the cost numbers are calculated? In this deep dive, we'll explore the formulas behind PostgreSQL's cost estimation for the three main scanning approaches: sequential scan, index scan, and bitmap heap scan.
 
-## 1. Cost-based Optimization and PostgreSQL Constants {#postgresql-cost-constants}
+## 1. Cost-based vs Rule-based {#postgresql-cost-constants}
 
 Consider this query:
 
@@ -18,9 +18,9 @@ WHERE ta.status = 'active' AND tb.created_at > '2020-12-01';
 
 How would you approach this query? The intuitive flow would be: filter each table first, then join. Make tables smaller first, then start joining. Quite intuitive, right?
 
-But what if `table_b` has only `100` rows while `table_a` has `10` million? The join could eliminate `99.99%` of the data before the expensive filter operation. In the early days of databases, query optimizers used rule-based approaches that couldn't handle such scenarios effectively.
+This intuitive approach represents **rule-based optimization** - applying fixed rules regardless of data characteristics. But what if `table_b` has only `100` rows while `table_a` has `10` million? The join could eliminate `99.99%` of the data before the expensive filter operation. In the early days of databases, query optimizers used rule-based approaches that couldn't handle such scenarios effectively.
 
-This is where cost-based optimization shines. PostgreSQL imagines **all possible execution scenarios** - considering table statistics, cardinality, storage characteristics (SSD vs HDD), and different access methods (sequential scan, index scan, nested loop join, merge join). It then calculates costs for each approach and picks the cheapest one.
+This is where **cost-based optimization** shines - the solution PostgreSQL adopted. PostgreSQL imagines **all possible execution scenarios** - considering table statistics, cardinality, storage characteristics (SSD vs HDD), and different access methods (sequential scan, index scan, nested loop join, merge join). It then calculates costs for each approach and picks the cheapest one.
 
 Here's how PostgreSQL shows these costs in practice:
 
@@ -67,7 +67,7 @@ H_index                               # Height of internal tree levels (not incl
 
 These are dimensionless units for relative comparison, not absolute performance.
 
-## 2. Sequential Scan Cost Estimation
+## 2. Sequential Scan
 
 For sequential scans, the startup cost is always `0` since there's no index traversal needed - PostgreSQL can read the first tuple immediately from the data file. Let's estimate the cost for this query:
 
@@ -124,7 +124,7 @@ Even though the condition `id <= 8000` matches only `8000` rows, sequential scan
 
 > **Important**: As understood from the run-cost estimation, PostgreSQL assumes that all pages will be read from storage. In other words, PostgreSQL does not consider whether the scanned page is in the shared buffers or not.
 
-## 3. Index Scan Cost Estimation
+## 3. Index Scan
 
 Let's explore how to estimate the index scan cost for the following query:
 
@@ -224,6 +224,30 @@ For a query like `continent = 'Asia'`, the selectivity is the frequency correspo
 
 If the MCV cannot be used, e.g., the target column type is integer or double precision, then the value of the `histogram_bounds` of the target column is used to estimate the cost.
 
+`histogram_bounds` is a list of values that divide the column's values into groups of approximately equal population.
+
+A specific example is shown. This is the value of the `histogram_bounds` of the column 'data' in the table 'tbl':
+
+```sql
+SELECT histogram_bounds FROM pg_stats WHERE tablename = 'tbl' AND attname = 'data';
+                                   histogram_bounds
+---------------------------------------------------------------------------------------------------
+ {1,100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,
+2200,2300,2400,2500,2600,2700,2800,2900,3000,3100,3200,3300,3400,3500,3600,3700,3800,3900,4000,4100,
+4200,4300,4400,4500,4600,4700,4800,4900,5000,5100,5200,5300,5400,5500,5600,5700,5800,5900,6000,6100,
+6200,6300,6400,6500,6600,6700,6800,6900,7000,7100,7200,7300,7400,7500,7600,7700,7800,7900,8000,8100,
+8200,8300,8400,8500,8600,8700,8800,8900,9000,9100,9200,9300,9400,9500,9600,9700,9800,9900,10000}
+(1 row)
+```
+
+By default, the histogram_bounds is divided into `100` buckets. Buckets are numbered starting from `0`, and every bucket stores approximately the same number of tuples. The values of histogram_bounds are the bounds of the corresponding buckets:
+
+```text
+histogram_bounds | hb(0) | hb(1) | hb(2) | hb(3) | ... | hb(99) | hb(100)
+-----------------+-------+-------+-------+-------+-----+--------+---------
+                 |     1 |   100 |   200 |   300 | ... |   9900 |   10000
+```
+
 For our query `data <= 240`, the value `240` falls in bucket 2 (between `hb[2] = 200` and `hb[3] = 300`). Using linear interpolation:
 
 ```python
@@ -276,7 +300,27 @@ min_io_cost = 1 * 4.0 + (ceil(0.024 * 45) - 1) * 1.0    # = 5
 Index correlation is a statistical correlation between the physical row ordering and the logical ordering of the column values. This ranges from `-1` to `+1`.
 
 ```sql
-testdb=# SELECT tablename,attname, correlation FROM pg_stats WHERE tablename = 'tbl_corr';
+SELECT col,col_asc,col_desc,col_rand
+testdb-#                         FROM tbl_corr;
+   col    | col_asc | col_desc | col_rand
+----------+---------+----------+----------
+ Tuple_1  |       1 |       12 |        3
+ Tuple_2  |       2 |       11 |        8
+ Tuple_3  |       3 |       10 |        5
+ Tuple_4  |       4 |        9 |        9
+ Tuple_5  |       5 |        8 |        7
+ Tuple_6  |       6 |        7 |        2
+ Tuple_7  |       7 |        6 |       10
+ Tuple_8  |       8 |        5 |       11
+ Tuple_9  |       9 |        4 |        4
+ Tuple_10 |      10 |        3 |        1
+ Tuple_11 |      11 |        2 |       12
+ Tuple_12 |      12 |        1 |        6
+(12 rows)
+```
+
+```sql
+SELECT tablename,attname, correlation FROM pg_stats WHERE tablename = 'tbl_corr';
  tablename | attname  | correlation
 -----------+----------+-------------
  tbl_corr  | col_asc  |           1
@@ -329,7 +373,7 @@ Our calculated cost (`13.485`) closely matches PostgreSQL's estimate (`13.49`), 
 
 > **SSD Optimization**: The [default values](#postgresql-cost-constants) assume random scans are four times slower than sequential scans, reflecting traditional HDD performance. For SSDs, consider reducing [`random_page_cost`](#postgresql-cost-constants) to around `1.0` for better query plans.
 
-## 4. Bitmap Scan Cost Estimation
+## 4. Bitmap Scan
 
 Bitmap scans combine the benefits of index scans and sequential scans. Let's set up a test table to examine bitmap scan cost estimation:
 
@@ -348,17 +392,10 @@ FROM generate_series(1, 1000000) n;
 VACUUM ANALYZE foo;
 ```
 
-Now let's examine this Bitmap Scan example:
+Now let's estimate the cost for this Bitmap Scan query:
 
 ```sql
-EXPLAIN SELECT * FROM foo WHERE bar = 2;
-                                   QUERY PLAN
---------------------------------------------------------------------------------
- Bitmap Heap Scan on foo  (cost=115.47..5722.32 rows=10200 width=12)
-   Recheck Cond: (bar = 2)
-   ->  Bitmap Index Scan on foo_bar_idx  (cost=0.00..112.92 rows=10200 width=0)
-         Index Cond: (bar = 2)
-(4 rows)
+SELECT * FROM foo WHERE bar = 2;
 ```
 
 First, let's get the table statistics:
@@ -424,6 +461,10 @@ The Bitmap Heap Scan I/O cost calculation differs from Index Scan. Pages are fet
 
 The Mackert-Lohman formula estimates the number of pages fetched in a bitmap scan, based on the coupon collector problem. It calculates how many unique pages contain the selected tuples:
 
+<div style="display: inline-block; background-color: #6A6767; width: 35rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;">
+    <img src="https://latex.codecogs.com/svg.latex?\color{white}\text{pages\_fetched} = \min\left(\frac{2 \cdot \text{N\_page} \cdot \text{tuples\_fetched}}{2 \cdot \text{N\_page} + \text{tuples\_fetched}}, \text{N\_page}\right)" title="Mackert-Lohman Formula" />
+</div>
+
 ```python
 # First calculate tuples fetched
 tuples_fetched = N_tuple * Selectivity
@@ -463,14 +504,29 @@ total_cost = startup_cost + run_cost
 total_cost = 115 + 5607  # = 5722
 ```
 
+For confirmation, the result of the EXPLAIN command shows:
+
+```sql
+EXPLAIN SELECT * FROM foo WHERE bar = 2;
+                                   QUERY PLAN
+--------------------------------------------------------------------------------
+ Bitmap Heap Scan on foo  (cost=115.47..5722.32 rows=10200 width=12)
+   Recheck Cond: (bar = 2)
+   ->  Bitmap Index Scan on foo_bar_idx  (cost=0.00..112.92 rows=10200 width=0)
+         Index Cond: (bar = 2)
+(4 rows)
+```
+
+Our calculated costs are very close to PostgreSQL's estimates: startup cost (`115` vs `115.47`) and total cost (`5722` vs `5722.32`). The small differences are due to rounding in our step-by-step calculations, additional internal optimizations in PostgreSQL's implementation, and floating-point precision differences. This close match validates that our cost estimation formulas capture the core logic correctly.
+
 ## Conclusion
 
 I initially wanted to define simple selectivity thresholds: 5% use index scan, 5-10% use bitmap scan, above 15% use sequential scan. However, after diving deep into PostgreSQL's cost calculations, I realize: just let the optimizer do its job. The complexity of factors like index correlation, page distribution, and hardware characteristics makes manual rules impractical. Our job is simply to create valuable indexes and trust PostgreSQL's cost-based optimizer.
 
 ## References
 
--   [PostgreSQL Internals: Chapter 3.2 - Cost Estimation](https://www.interdb.jp/pg/pgsql03/02.html)
--   [PostgreSQL Documentation: Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html)
--   [Bitmap Scan Tutorial - Rockdata PostgreSQL](https://www.rockdata.net/tutorial/plan-bitmap-scan/)
--   [PostgreSQL Planner Cost Constants - GitHub Gist](https://gist.github.com/SamsadSajid/40e14bbb9157f53f44cca08d1e9eba39)
--   [PostgreSQL Source Code: costsize.c](https://github.com/postgres/postgres/blob/master/src/backend/optimizer/path/costsize.c)
+-   https://www.interdb.jp/pg/pgsql03/02.html
+-   https://www.postgresql.org/docs/current/using-explain.html
+-   https://www.rockdata.net/tutorial/plan-bitmap-scan/
+-   https://gist.github.com/SamsadSajid/40e14bbb9157f53f44cca08d1e9eba39
+-   https://github.com/postgres/postgres/blob/master/src/backend/optimizer/path/costsize.c

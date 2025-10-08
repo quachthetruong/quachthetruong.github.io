@@ -51,9 +51,9 @@ Insertion sort complexity: Sorting a bucket with `n` elements costs `O(n²)`.
 
 Setting Up the Problem:
 
-- `n`: total number of elements.
-- `k`: number of buckets.
-- `n_i`: number of elements in bucket i.
+-   `n`: total number of elements.
+-   `k`: number of buckets.
+-   `n_i`: number of elements in bucket i.
 
 We model the assignment of elements to buckets using indicator random variables:
 
@@ -102,20 +102,20 @@ On paper, Bucket Sort sounds amazing — it's one of the few sorting algorithms 
 
 Why? It comes down to strict limitations:
 
-- It only works well on uniformly distributed data. If your input values are clustered or uneven, bucket sort can slow down dramatically.
+-   It only works well on uniformly distributed data. If your input values are clustered or uneven, bucket sort can slow down dramatically.
 
-- It needs a lot of memory. In the best case, you create as many buckets as input elements, which is often impractical.
+-   It needs a lot of memory. In the best case, you create as many buckets as input elements, which is often impractical.
 
-- It’s not in-place. That means it copies data around, consuming extra space compared to in-place algorithms like quicksort.
+-   It’s not in-place. That means it copies data around, consuming extra space compared to in-place algorithms like quicksort.
 
-- It doesn’t generalize easily. For example, it can’t handle complex comparison logic, custom comparators, or non-numeric types well.
+-   It doesn’t generalize easily. For example, it can’t handle complex comparison logic, custom comparators, or non-numeric types well.
 
 So, despite its theoretical speed, Bucket Sort is rarely the right tool for general-purpose sorting.
 But in specific, controlled use cases, the bucket idea can still be useful:
 
-- Distributed systems like Apache Spark or Hadoop use a similar idea called bucket partitioning — breaking data into ranges to parallelize processing.
+-   Distributed systems like Apache Spark or Hadoop use a similar idea called bucket partitioning — breaking data into ranges to parallelize processing.
 
-- Radix Sort, a cousin of bucket sort, is used in systems where data can be broken down into digits or bytes — like sorting IP addresses, phone numbers, or fixed-length IDs — and works extremely well.
+-   Radix Sort, a cousin of bucket sort, is used in systems where data can be broken down into digits or bytes — like sorting IP addresses, phone numbers, or fixed-length IDs — and works extremely well.
 
 ### Part 4: Conclusion
 
@@ -124,3 +124,8 @@ In this article, we've broken down why Bucket Sort can theoretically run in O(n)
 But in practice, these ideal conditions are rare. That’s likely why Bucket Sort doesn’t show up much in popular tools or libraries.
 
 > If you’ve seen Bucket Sort used in a real application or system — not just as an example in a textbook — I’d love to hear about it. I'm still looking for real-world use cases beyond the theory.
+
+## References
+
+-   https://en.wikipedia.org/wiki/Bucket_sort
+-   https://www.geeksforgeeks.org/dsa/bucket-sort-2/
