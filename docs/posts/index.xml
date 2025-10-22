@@ -11,8 +11,29 @@
     </image>
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 01 Oct 2025 10:00:00 +0700</lastBuildDate>
+    <lastBuildDate>Wed, 22 Oct 2025 10:00:00 +0700</lastBuildDate>
     <atom:link href="https://quachthetruong.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Motivation Collection</title>
+      <link>https://quachthetruong.github.io/posts/life/my-motivation-collection/</link>
+      <pubDate>Wed, 22 Oct 2025 10:00:00 +0700</pubDate>
+      <guid>https://quachthetruong.github.io/posts/life/my-motivation-collection/</guid>
+      <description>&lt;h2 id=&#34;movies&#34;&gt;Movies&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;The Pursuit of Happyness - USA - 2006&lt;/li&gt;
+&lt;li&gt;The Shawshank Redemption - USA - 1994&lt;/li&gt;
+&lt;li&gt;Forrest Gump - USA - 1994&lt;/li&gt;
+&lt;li&gt;3 Idiots - India - 2009&lt;/li&gt;
+&lt;li&gt;Cast Away - USA - 2000&lt;/li&gt;
+&lt;li&gt;Itaewon Class - South Korea - 2020&lt;/li&gt;
+&lt;li&gt;Prison Playbook - South Korea - 2017&lt;/li&gt;
+&lt;li&gt;Inside Out - USA - 2015&lt;/li&gt;
+&lt;li&gt;Thời đại mới - China - 2010&lt;/li&gt;
+&lt;li&gt;Upstream - China - 2024&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;songs&#34;&gt;Songs&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;YouTube Playlist:&lt;/strong&gt; &lt;a href=&#34;https://www.youtube.com/playlist?list=PLWRGo-tQGE8StsIPLEbSKxjMbLCdWcjKM&#34; target=&#34;_blank&#34; &gt;https://www.youtube.com/playlist?list=PLWRGo-tQGE8StsIPLEbSKxjMbLCdWcjKM&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>How PostgreSQL Evaluates Execution Plans: Cost Estimation Deep Dive</title>
       <link>https://quachthetruong.github.io/posts/technical/postgres-cost-estimation/</link>
