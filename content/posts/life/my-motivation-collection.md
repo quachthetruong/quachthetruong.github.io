@@ -16,6 +16,8 @@ tags: ["motivation", "life"]
 -   Inside Out - USA - 2015
 -   Thời đại mới - China - 2010
 -   Upstream - China - 2024
+-   Slumdog Millionaire - India - 2008
+-   Like Stars on Earth - India - 2007
 
 ## Songs
 
@@ -58,3 +60,8 @@ tags: ["motivation", "life"]
 -   Star Sky - Two Steps From Hell
 -   Victory - Two Steps From Hell
 -   Đường Đến Ngày Vinh Quang - Bức Tường
+-   Cuộc đời vô danh - Trần Tuyết Nhiên
+-   Hãy làm ánh sáng của chính mình, không cần phải quá sáng - Thiện Vũ
+-   Một đường nở hoa - Ôn Dịch Tâm
+-   Đáp án của bạn - A Nhũng
+-   Thiến niên - Mộng Nhiên
