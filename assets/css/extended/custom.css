@@ -1,0 +1,19 @@
+.entry-footer .post-tags {
+    margin-top: 4px;
+    gap: 4px 8px;
+}
+
+.entry-footer .post-tags a {
+    font-size: 13px;
+    color: var(--secondary);
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    padding: 3px 10px;
+    line-height: 1.4;
+}
+
+.entry-footer .post-tags a:hover {
+    color: var(--primary);
+    background: none;
+}

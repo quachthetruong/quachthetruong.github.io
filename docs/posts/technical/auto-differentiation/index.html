@@ -6,13 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>How Computers Do Differentiation? | Quach</title>
-<meta name="keywords" content="artificial intelligence, math, computer science">
+<meta name="keywords" content="AI, math, computer science">
 <meta name="description" content="Differentiation is a key concept in machine learning, especially when optimizing functions like loss functions in neural networks. It helps us find the minimum of these functions, which is crucial for tasks like training a model. But have you ever wondered how popular libraries like TensorFlow and PyTorch perform differentiation? Let’s break it down!
 1. Manual Differentiation: The Old-School Method
 In school, we learn how to manually compute derivatives using calculus. You apply a set of rules to functions to find how they change with respect to their inputs. For example, given a simple function like:">
 <meta name="author" content="Truong">
 <link rel="canonical" href="https://quachthetruong.github.io/posts/technical/auto-differentiation/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2084c0e13361ee917e8548e4614a8fa67af76760127026cccf496973fbfa0ad6.css" integrity="sha256-IITA4TNh7pF&#43;hUjkYUqPpnr3Z2AScCbMz0lpc/v6CtY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://quachthetruong.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://quachthetruong.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://quachthetruong.github.io/favicon-32x32.png">
@@ -39,7 +39,7 @@ In school, we learn how to manually compute derivatives using calculus. You appl
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-04-24T17:29:51+07:00">
     <meta property="article:modified_time" content="2025-04-24T17:29:51+07:00">
-    <meta property="article:tag" content="Artificial Intelligence">
+    <meta property="article:tag" content="AI">
     <meta property="article:tag" content="Math">
     <meta property="article:tag" content="Computer Science">
       <meta property="og:image" content="https://quachthetruong.github.io/papermod-cover.png">
@@ -79,7 +79,7 @@ In school, we learn how to manually compute derivatives using calculus. You appl
   "name": "How Computers Do Differentiation?",
   "description": "Differentiation is a key concept in machine learning, especially when optimizing functions like loss functions in neural networks. It helps us find the minimum of these functions, which is crucial for tasks like training a model. But have you ever wondered how popular libraries like TensorFlow and PyTorch perform differentiation? Let’s break it down!\n1. Manual Differentiation: The Old-School Method In school, we learn how to manually compute derivatives using calculus. You apply a set of rules to functions to find how they change with respect to their inputs. For example, given a simple function like:\n",
   "keywords": [
-    "artificial intelligence", "math", "computer science"
+    "AI", "math", "computer science"
   ],
   "articleBody": "Differentiation is a key concept in machine learning, especially when optimizing functions like loss functions in neural networks. It helps us find the minimum of these functions, which is crucial for tasks like training a model. But have you ever wondered how popular libraries like TensorFlow and PyTorch perform differentiation? Let’s break it down!\n1. Manual Differentiation: The Old-School Method In school, we learn how to manually compute derivatives using calculus. You apply a set of rules to functions to find how they change with respect to their inputs. For example, given a simple function like:\nWe could compute the partial derivatives with respect to x and y as follows:\nThis method works well for simple functions, but as functions become more complex, the process of differentiation becomes tedious and prone to errors. It’s not scalable for large models, especially those used in machine learning.\n2. Finite Difference Approximation: A Simpler, But Less Accurate Method Finite difference approximation is a numerical method for calculating derivatives without explicit formulas. It approximates the derivative as the slope of a secant line between two points on the function. The derivative at point x0 is defined as:\nWhere ε is a small value (e.g., 10^(-5))\nExample with Python Code # f(x, y) = x^2 y + y + 2 with (x,y)=(3,4) def f(x, y): return x**2 * y + y + 2 def derivative(f, x, y, x_eps, y_eps): return (f(x + x_eps, y + y_eps) - f(x, y)) / (x_eps + y_eps) df_dx = derivative(f, 3, 4, 0.00001, 0) df_dy = derivative(f, 3, 4, 0, 0.00001) print(f\"df_dx: {df_dx}\") # 24.000039999805264 print(f\"df_dy: {df_dy}\") # 10.000000000331966 Limitations While simple, finite difference approximation is imprecise and becomes inefficient with many parameters. If there were 1000 parameters, we would need to call f() at least 1001 times. When you are dealing with large neural networks, this makes finite difference approximation way too inefficient.\n3. Forward-Mode Autodiff The figure below demonstrates forward-mode autodiff applied to the simple function 𝑔(𝑥,𝑦)=5+𝑥𝑦. The left graph shows the function, while the right graph represents the partial derivative ∂𝑔/∂x=0+(0⋅𝑥+𝑦⋅1)=𝑦. A similar process can be used to obtain the partial derivative with respect to 𝑦\nThe forward-mode autodiff algorithm works by traversing the computation graph from inputs to outputs. It starts by computing the partial derivatives of the leaf nodes. For instance, the constant node 5 returns 0 (since the derivative of a constant is 0), 𝑥 returns 1 (since ∂𝑥/∂𝑥=1), and 𝑦 returns 0 (since ∂𝑦/∂𝑥=0).\nNext, we move to the multiplication node, where the product rule is applied: ∂(𝑢⋅𝑣)/∂𝑥=∂𝑣/∂𝑥⋅𝑢+𝑣⋅∂𝑢/∂𝑥. This gives the expression 0⋅𝑥+𝑦⋅1.\nFinally, at the addition node, the derivative of a sum is the sum of the derivatives, so we combine the parts to get ∂𝑔/∂𝑥=0+(0⋅𝑥+𝑦⋅1).\nThough the equation can be simplified further to ∂𝑔/∂𝑥=𝑦, but imagine if our function had a variable 𝑧— we would need to calculate the entire graph once more. In real-world scenarios, the function may have many more variables, making the differentiation process much more complex and time-consuming.\n4. Reverse-Mode Autodiff Reverse-mode autodiff is a powerful technique commonly used in machine learning. It involves two passes through the computation graph. The first pass computes the value of each node from inputs to output. The second pass works in reverse (from output to inputs) to compute all partial derivatives. This process is known as “reverse mode” because gradients flow backward through the graph.\nThe graph bellow illustrates the second pass. During the first pass, all node values are computed starting from 𝑥 = 3 and 𝑦 = 4, with results shown at the bottom of each node (e.g., 𝑥 × 𝑥 = 9). The output node, 𝑓(3,4), results in 42.\nThe reverse pass applies the chain rule to compute partial derivatives. The chain rule is given by:\nwhere each n𝑖 represents an intermediate node in the graph.\nExample of Calculating Partial Derivatives Let’s go through the reverse pass step by step:\nAt n7 (the output node): Since n7 is the output node, f=n7, and the derivative with respect to n7 is 1.\nAt n5: Since n7 = n6 + n5, we have:\nThus, the partial derivative is: At n4: Since n5 = n4 * n2, we have:\nThus, the partial derivative is:\nThis process continues for all the nodes in the graph. In the end, we will have computed all partial derivatives of 𝑓(𝑥,𝑦) at 𝑥 = 3 and 𝑦 = 4. In this example, we find:\nKey Benefits of Reverse-Mode Autodiff Reverse-mode autodiff is particularly efficient when there are many inputs and fewer outputs, as it only requires one forward pass and one reverse pass per output. This makes it ideal for machine learning tasks, especially when training models like neural networks where there is typically only one output (e.g., the loss). This means only two passes through the graph are needed to compute all the gradients with respect to the model parameters.\nReverse-mode autodiff can also handle functions that are not entirely differentiable, as long as the partial derivatives can be computed at differentiable points.\nConclusion Having explored how computers perform differentiation, it’s clear why reverse-mode autodiff is the dominant solution in machine learning. The key advantage of reverse-mode is that it only requires two passes—one forward and one reverse—per output, regardless of the number of inputs. This makes it highly efficient, especially for large models where there are many parameters but typically only a single output, like the loss function in neural networks. Reverse-mode autodiff allows for fast, scalable optimization, making it the primary approach in modern machine learning frameworks.\nReferences https://github.com/ageron/handson-ml3 https://www.youtube.com/watch?v=wG_nF1awSSY https://srijithr.gitlab.io/post/autodiff/ https://www.tensorflow.org/guide/autodiff ",
   "wordCount" : "931",
@@ -265,18 +265,18 @@ In school, we learn how to manually compute derivatives using calculus. You appl
 <ol>
 <li>At <code>n7</code> (the output node):</li>
 </ol>
-<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;"> 
-  <img src="https://latex.codecogs.com/svg.latex?\color{white}\frac{\partial%20f}{\partial%20n_7}%20=%201" 
-  title="\frac{\partial f}{\partial n_7} = 1" />
-</div>
+ <div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;"> 
+   <img src="https://latex.codecogs.com/svg.latex?\color{white}\frac{\partial%20f}{\partial%20n_7}%20=%201" 
+   title="\frac{\partial f}{\partial n_7} = 1" />
+ </div>
 <p>Since <code>n7</code> is the output node, <code>f=n7</code>, and the derivative with respect to <code>n7</code> is 1.</p>
 <ol start="2">
 <li>At <code>n5</code>:</li>
 </ol>
-<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;"> 
-  <img src="https://latex.codecogs.com/svg.latex?\color{white}\frac{\partial%20f}{\partial%20n_5}%20=%20\frac{\partial%20f}{\partial%20n_7}%20\times%20\frac{\partial%20n_7}{\partial%20n_5}" 
-  title="\frac{\partial f}{\partial n_5} = \frac{\partial f}{\partial n_7} \times \frac{\partial n_7}{\partial n_5} = 1 \times 1 = 1" />
-</div>
+ <div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;"> 
+   <img src="https://latex.codecogs.com/svg.latex?\color{white}\frac{\partial%20f}{\partial%20n_5}%20=%20\frac{\partial%20f}{\partial%20n_7}%20\times%20\frac{\partial%20n_7}{\partial%20n_5}" 
+   title="\frac{\partial f}{\partial n_5} = \frac{\partial f}{\partial n_7} \times \frac{\partial n_7}{\partial n_5} = 1 \times 1 = 1" />
+ </div>
 <p>Since <code>n7 = n6 + n5</code>, we have:</p>
 <div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;"> 
   <img src="https://latex.codecogs.com/svg.latex?\color{white}\frac{\partial%20n_7}{\partial%20n_5}=%201" 
@@ -327,7 +327,7 @@ Thus, the partial derivative is:
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://quachthetruong.github.io/tags/artificial-intelligence/">Artificial Intelligence</a></li>
+      <li><a href="https://quachthetruong.github.io/tags/ai/">AI</a></li>
       <li><a href="https://quachthetruong.github.io/tags/math/">Math</a></li>
       <li><a href="https://quachthetruong.github.io/tags/computer-science/">Computer Science</a></li>
     </ul>
@@ -348,7 +348,7 @@ Thus, the partial derivative is:
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share How Computers Do Differentiation? on x"
-            href="https://x.com/intent/tweet/?text=How%20Computers%20Do%20Differentiation%3f&amp;url=https%3a%2f%2fquachthetruong.github.io%2fposts%2ftechnical%2fauto-differentiation%2f&amp;hashtags=artificialintelligence%2cmath%2ccomputerscience">
+            href="https://x.com/intent/tweet/?text=How%20Computers%20Do%20Differentiation%3f&amp;url=https%3a%2f%2fquachthetruong.github.io%2fposts%2ftechnical%2fauto-differentiation%2f&amp;hashtags=AI%2cmath%2ccomputerscience">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -436,7 +436,7 @@ Thus, the partial derivative is:
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://quachthetruong.github.io/">Quach</a></span> · 
+        <span>&copy; 2026 <a href="https://quachthetruong.github.io/">Quach</a></span> · 
 
     <span>
         Powered by

@@ -1,7 +1,7 @@
 ---
 title: "How Computers Do Differentiation?"
 date: 2025-04-24T17:29:51+07:00
-tags: ["artificial intelligence", "math", "computer science"]
+tags: ["AI", "math", "computer science"]
 ---
 
 Differentiation is a key concept in machine learning, especially when optimizing functions like loss functions in neural networks. It helps us find the minimum of these functions, which is crucial for tasks like training a model. But have you ever wondered how popular libraries like **TensorFlow** and **PyTorch** perform differentiation? Let’s break it down!
@@ -89,18 +89,18 @@ where each `n𝑖` represents an intermediate node in the graph.
 Let’s go through the reverse pass step by step:
 
 1. At `n7` (the output node):
-<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;"> 
-  <img src="https://latex.codecogs.com/svg.latex?\color{white}\frac{\partial%20f}{\partial%20n_7}%20=%201" 
-  title="\frac{\partial f}{\partial n_7} = 1" />
-</div>
+ <div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;"> 
+   <img src="https://latex.codecogs.com/svg.latex?\color{white}\frac{\partial%20f}{\partial%20n_7}%20=%201" 
+   title="\frac{\partial f}{\partial n_7} = 1" />
+ </div>
 
 Since `n7` is the output node, `f=n7`, and the derivative with respect to `n7` is 1.
 
 2. At `n5`:
-<div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;"> 
-  <img src="https://latex.codecogs.com/svg.latex?\color{white}\frac{\partial%20f}{\partial%20n_5}%20=%20\frac{\partial%20f}{\partial%20n_7}%20\times%20\frac{\partial%20n_7}{\partial%20n_5}" 
-  title="\frac{\partial f}{\partial n_5} = \frac{\partial f}{\partial n_7} \times \frac{\partial n_7}{\partial n_5} = 1 \times 1 = 1" />
-</div>
+ <div style="display: inline-block; background-color: #6A6767; width: 25rem; height: 4rem;padding-left: 1rem; align-items: center; display:flex; border-radius: 8px;"> 
+   <img src="https://latex.codecogs.com/svg.latex?\color{white}\frac{\partial%20f}{\partial%20n_5}%20=%20\frac{\partial%20f}{\partial%20n_7}%20\times%20\frac{\partial%20n_7}{\partial%20n_5}" 
+   title="\frac{\partial f}{\partial n_5} = \frac{\partial f}{\partial n_7} \times \frac{\partial n_7}{\partial n_5} = 1 \times 1 = 1" />
+ </div>
 
 Since `n7 = n6 + n5`, we have:
 
