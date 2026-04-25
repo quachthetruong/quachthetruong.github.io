@@ -3,7 +3,6 @@ title: Quach
 pagination:
     pageSize: 10
 theme:
-    - disqus
     - hugo-PaperMod
 
 social: true
@@ -92,7 +91,7 @@ params:
         Text: "Suggest Changes" # edit text
         appendFilePath: true # to append file path to Edit link
 
-    comments: true
+    comments: false
 
     # label:
     #     text: "Home"
@@ -124,7 +123,6 @@ params:
     #     minMatchCharLength: 0
     #     keys: ["title", "permalink", "summary", "content"]
 
-disqusShortname: truong
 taxonomies:
     # category: categories
     tag: tags
