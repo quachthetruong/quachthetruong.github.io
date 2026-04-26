@@ -76,9 +76,9 @@ params:
               url: tags
 
     homeInfoParams:
-        Title: "Strive for a life of significance"
-        Content: >
-            ✍️ Write more, talk less!
+        Title: "✍️ Write more, talk less!"
+        # Content: >
+
         # - name: github
         #   url: "https://github.com/quachthetruong"
         # - name: facebook
