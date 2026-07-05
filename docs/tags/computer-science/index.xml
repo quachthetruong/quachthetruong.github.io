@@ -15,9 +15,9 @@
     <atom:link href="https://quachthetruong.github.io/tags/computer-science/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How PostgreSQL Evaluates Execution Plans: Cost Estimation Deep Dive</title>
-      <link>https://quachthetruong.github.io/posts/technical/postgres-cost-estimation/</link>
+      <link>https://quachthetruong.github.io/tech/postgres-cost-estimation/</link>
       <pubDate>Wed, 01 Oct 2025 10:00:00 +0700</pubDate>
-      <guid>https://quachthetruong.github.io/posts/technical/postgres-cost-estimation/</guid>
+      <guid>https://quachthetruong.github.io/tech/postgres-cost-estimation/</guid>
       <description>&lt;p&gt;When diving deep into the &lt;code&gt;EXPLAIN&lt;/code&gt; command, you already know what index scans, sequential scans, and hash joins are. But have you ever wondered how exactly the cost numbers are calculated? In this deep dive, we&amp;rsquo;ll explore the formulas behind PostgreSQL&amp;rsquo;s cost estimation for the three main scanning approaches: sequential scan, index scan, and bitmap heap scan.&lt;/p&gt;
 &lt;h2 id=&#34;postgresql-cost-constants&#34;&gt;1. Cost-based vs Rule-based&lt;/h2&gt;
 &lt;p&gt;Consider this query:&lt;/p&gt;
@@ -28,9 +28,9 @@
     </item>
     <item>
       <title>Why the Average Complexity of Bucket sort is O(n)?</title>
-      <link>https://quachthetruong.github.io/posts/technical/bucket-sort-time-complexity/</link>
+      <link>https://quachthetruong.github.io/tech/bucket-sort-time-complexity/</link>
       <pubDate>Tue, 20 May 2025 17:29:51 +0700</pubDate>
-      <guid>https://quachthetruong.github.io/posts/technical/bucket-sort-time-complexity/</guid>
+      <guid>https://quachthetruong.github.io/tech/bucket-sort-time-complexity/</guid>
       <description>&lt;h3 id=&#34;part-1-introduction-and-code&#34;&gt;Part 1: Introduction and Code&lt;/h3&gt;
 &lt;p&gt;Bucket Sort is an efficient sorting algorithm when input values are uniformly distributed over a range. It works by distributing elements into different &amp;ldquo;buckets&amp;rdquo;, sorting each bucket, and then concatenating the results.&lt;/p&gt;
 &lt;p&gt;Here’s a typical Python implementation where each bucket is sorted with &lt;code&gt;Insertion Sort&lt;/code&gt;:&lt;/p&gt;
@@ -67,26 +67,26 @@
     </item>
     <item>
       <title>How Computers Do Differentiation?</title>
-      <link>https://quachthetruong.github.io/posts/technical/auto-differentiation/</link>
+      <link>https://quachthetruong.github.io/tech/auto-differentiation/</link>
       <pubDate>Thu, 24 Apr 2025 17:29:51 +0700</pubDate>
-      <guid>https://quachthetruong.github.io/posts/technical/auto-differentiation/</guid>
+      <guid>https://quachthetruong.github.io/tech/auto-differentiation/</guid>
       <description>&lt;p&gt;Differentiation is a key concept in machine learning, especially when optimizing functions like loss functions in neural networks. It helps us find the minimum of these functions, which is crucial for tasks like training a model. But have you ever wondered how popular libraries like &lt;strong&gt;TensorFlow&lt;/strong&gt; and &lt;strong&gt;PyTorch&lt;/strong&gt; perform differentiation? Let’s break it down!&lt;/p&gt;
 &lt;h2 id=&#34;1-manual-differentiation-the-old-school-method&#34;&gt;1. Manual Differentiation: The Old-School Method&lt;/h2&gt;
 &lt;p&gt;In school, we learn how to manually compute derivatives using calculus. You apply a set of rules to functions to find how they change with respect to their inputs. For example, given a simple function like:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Why the Average Complexity of QuickSort is O(nlogn)?</title>
-      <link>https://quachthetruong.github.io/posts/technical/quick-sort-time-complexity/</link>
+      <link>https://quachthetruong.github.io/tech/quick-sort-time-complexity/</link>
       <pubDate>Mon, 21 Apr 2025 17:29:51 +0700</pubDate>
-      <guid>https://quachthetruong.github.io/posts/technical/quick-sort-time-complexity/</guid>
+      <guid>https://quachthetruong.github.io/tech/quick-sort-time-complexity/</guid>
       <description>&lt;p&gt;For most developers, QuickSort is a fast and efficient sorting algorithm with a time complexity of &lt;code&gt;O(nlogn)&lt;/code&gt;. This makes it significantly better than other common sorting algorithms, like Selection Sort or Bubble Sort, which have a time complexity of &lt;code&gt;O(n²)&lt;/code&gt;. However, the question remains: &lt;strong&gt;Why is the average time complexity of QuickSort O(nlogn)?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;In this blog, we will delve deep into the mathematical and probabilistic principles that explain this efficiency, helping you understand the underlying reasons why QuickSort is faster than other algorithms on average.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution</title>
-      <link>https://quachthetruong.github.io/posts/technical/bloom-filters-explained/</link>
+      <link>https://quachthetruong.github.io/tech/bloom-filters-explained/</link>
       <pubDate>Fri, 18 Apr 2025 17:29:51 +0700</pubDate>
-      <guid>https://quachthetruong.github.io/posts/technical/bloom-filters-explained/</guid>
+      <guid>https://quachthetruong.github.io/tech/bloom-filters-explained/</guid>
       <description>&lt;h2 id=&#34;part-1-motivation&#34;&gt;Part 1: Motivation&lt;/h2&gt;
 &lt;h3 id=&#34;how-do-we-check-if-something-is-in-a-set--fast&#34;&gt;How do we check if something is in a set — fast?&lt;/h3&gt;
 &lt;p&gt;The simplest way is a &lt;code&gt;List&lt;/code&gt;:&lt;/p&gt;

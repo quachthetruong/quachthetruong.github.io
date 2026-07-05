@@ -24,6 +24,12 @@ languages:
         weight: 1
         menu:
             main:
+                - name: Life
+                  url: life/
+                  weight: 1
+                - name: Tech
+                  url: tech/
+                  weight: 2
                 - name: Archive
                   url: archives
                   weight: 5
@@ -92,6 +98,10 @@ params:
         appendFilePath: true # to append file path to Edit link
 
     comments: false
+    mainSections:
+        - life
+        - tech
+    ShowAllPagesInArchive: true
 
     # label:
     #     text: "Home"

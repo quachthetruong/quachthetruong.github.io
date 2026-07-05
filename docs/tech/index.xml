@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tech on Quach</title>
+    <link>https://quachthetruong.github.io/tech/</link>
+    <description>Recent content in Tech on Quach</description>
+    <image>
+      <title>Quach</title>
+      <url>https://quachthetruong.github.io/papermod-cover.png</url>
+      <link>https://quachthetruong.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 01 Oct 2025 10:00:00 +0700</lastBuildDate>
+    <atom:link href="https://quachthetruong.github.io/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How PostgreSQL Evaluates Execution Plans: Cost Estimation Deep Dive</title>
+      <link>https://quachthetruong.github.io/tech/postgres-cost-estimation/</link>
+      <pubDate>Wed, 01 Oct 2025 10:00:00 +0700</pubDate>
+      <guid>https://quachthetruong.github.io/tech/postgres-cost-estimation/</guid>
+      <description>&lt;p&gt;When diving deep into the &lt;code&gt;EXPLAIN&lt;/code&gt; command, you already know what index scans, sequential scans, and hash joins are. But have you ever wondered how exactly the cost numbers are calculated? In this deep dive, we&amp;rsquo;ll explore the formulas behind PostgreSQL&amp;rsquo;s cost estimation for the three main scanning approaches: sequential scan, index scan, and bitmap heap scan.&lt;/p&gt;
+&lt;h2 id=&#34;postgresql-cost-constants&#34;&gt;1. Cost-based vs Rule-based&lt;/h2&gt;
+&lt;p&gt;Consider this query:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; table_a ta
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;JOIN&lt;/span&gt; table_b tb &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; ta.id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tb.foreign_id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; ta.status &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;active&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;AND&lt;/span&gt; tb.created_at &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2020-12-01&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;How would you approach this query? The intuitive flow would be: filter each table first, then join. Make tables smaller first, then start joining. Quite intuitive, right?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why the Average Complexity of Bucket sort is O(n)?</title>
+      <link>https://quachthetruong.github.io/tech/bucket-sort-time-complexity/</link>
+      <pubDate>Tue, 20 May 2025 17:29:51 +0700</pubDate>
+      <guid>https://quachthetruong.github.io/tech/bucket-sort-time-complexity/</guid>
+      <description>&lt;h3 id=&#34;part-1-introduction-and-code&#34;&gt;Part 1: Introduction and Code&lt;/h3&gt;
+&lt;p&gt;Bucket Sort is an efficient sorting algorithm when input values are uniformly distributed over a range. It works by distributing elements into different &amp;ldquo;buckets&amp;rdquo;, sorting each bucket, and then concatenating the results.&lt;/p&gt;
+&lt;p&gt;Here’s a typical Python implementation where each bucket is sorted with &lt;code&gt;Insertion Sort&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;insertion_sort&lt;/span&gt;(bucket):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, len(bucket)):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        key &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; bucket[i]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;and&lt;/span&gt; bucket[j] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; key:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            bucket[j &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; bucket[j]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            j &lt;span style=&#34;color:#f92672&#34;&gt;-=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        bucket[j &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; key
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;bucket_sort&lt;/span&gt;(arr):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; len(arr)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    buckets &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [[] &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; _ &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(n)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# Put array elements in different buckets&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; arr:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        bi &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; int(n &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; num)  &lt;span style=&#34;color:#75715e&#34;&gt;# assuming input numbers are in [0,1)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        buckets[bi]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(num)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# Sort individual buckets using insertion sort&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; bucket &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; buckets:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        insertion_sort(bucket)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# Concatenate all buckets into arr[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    index &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; bucket &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; buckets:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; bucket:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            arr[index] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; num
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            index &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;why-insertion-sort&#34;&gt;Why Insertion Sort?&lt;/h4&gt;
+&lt;p&gt;Insertion sort is simple and efficient for small or nearly sorted lists. Since each bucket contains only a fraction of the input, sorting each bucket with insertion sort is fast.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How Computers Do Differentiation?</title>
+      <link>https://quachthetruong.github.io/tech/auto-differentiation/</link>
+      <pubDate>Thu, 24 Apr 2025 17:29:51 +0700</pubDate>
+      <guid>https://quachthetruong.github.io/tech/auto-differentiation/</guid>
+      <description>&lt;p&gt;Differentiation is a key concept in machine learning, especially when optimizing functions like loss functions in neural networks. It helps us find the minimum of these functions, which is crucial for tasks like training a model. But have you ever wondered how popular libraries like &lt;strong&gt;TensorFlow&lt;/strong&gt; and &lt;strong&gt;PyTorch&lt;/strong&gt; perform differentiation? Let’s break it down!&lt;/p&gt;
+&lt;h2 id=&#34;1-manual-differentiation-the-old-school-method&#34;&gt;1. Manual Differentiation: The Old-School Method&lt;/h2&gt;
+&lt;p&gt;In school, we learn how to manually compute derivatives using calculus. You apply a set of rules to functions to find how they change with respect to their inputs. For example, given a simple function like:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why the Average Complexity of QuickSort is O(nlogn)?</title>
+      <link>https://quachthetruong.github.io/tech/quick-sort-time-complexity/</link>
+      <pubDate>Mon, 21 Apr 2025 17:29:51 +0700</pubDate>
+      <guid>https://quachthetruong.github.io/tech/quick-sort-time-complexity/</guid>
+      <description>&lt;p&gt;For most developers, QuickSort is a fast and efficient sorting algorithm with a time complexity of &lt;code&gt;O(nlogn)&lt;/code&gt;. This makes it significantly better than other common sorting algorithms, like Selection Sort or Bubble Sort, which have a time complexity of &lt;code&gt;O(n²)&lt;/code&gt;. However, the question remains: &lt;strong&gt;Why is the average time complexity of QuickSort O(nlogn)?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In this blog, we will delve deep into the mathematical and probabilistic principles that explain this efficiency, helping you understand the underlying reasons why QuickSort is faster than other algorithms on average.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Solution</title>
+      <link>https://quachthetruong.github.io/tech/bloom-filters-explained/</link>
+      <pubDate>Fri, 18 Apr 2025 17:29:51 +0700</pubDate>
+      <guid>https://quachthetruong.github.io/tech/bloom-filters-explained/</guid>
+      <description>&lt;h2 id=&#34;part-1-motivation&#34;&gt;Part 1: Motivation&lt;/h2&gt;
+&lt;h3 id=&#34;how-do-we-check-if-something-is-in-a-set--fast&#34;&gt;How do we check if something is in a set — fast?&lt;/h3&gt;
+&lt;p&gt;The simplest way is a &lt;code&gt;List&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; items:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;But this is &lt;code&gt;O(n)&lt;/code&gt; — too slow for large-scale systems.&lt;/p&gt;
+&lt;p&gt;A &lt;code&gt;HashSet&lt;/code&gt; improves to &lt;code&gt;O(1)&lt;/code&gt; lookups on average,
+but it stores the full elements, requiring &lt;strong&gt;more memory than raw data&lt;/strong&gt; — especially for strings or objects.&lt;/p&gt;
+&lt;h3 id=&#34;so-what-if-we-trade-a-little-accuracy-for-massive-savings&#34;&gt;So what if we trade a little accuracy for massive savings?&lt;/h3&gt;
+&lt;p&gt;What if a structure could:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
