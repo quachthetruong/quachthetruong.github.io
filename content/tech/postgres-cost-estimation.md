@@ -203,7 +203,7 @@ index_io_cost  = ceil(Selectivity * N_index_page) * random_page_cost
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 ">
 
-**📝 Background: Selectivity Calculation**
+**Background: Selectivity Calculation**
 
 The selectivity of query predicates is estimated using either the `histogram_bounds` or the MCV (Most Common Value), both of which are stored in the statistics information in the `pg_stats`.
 
@@ -297,7 +297,7 @@ min_io_cost = 1 * 4.0 + (ceil(0.024 * 45) - 1) * 1.0    # = 5
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 ">
 
-**📝 Background: Index Correlation**
+**Background: Index Correlation**
 
 Index correlation is a statistical correlation between the physical row ordering and the logical ordering of the column values. This ranges from `-1` to `+1`.
 
@@ -459,7 +459,7 @@ The Bitmap Heap Scan I/O cost calculation differs from Index Scan. Pages are fet
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 ">
 
-**📝 Background: Mackert-Lohman Formula**
+**Background: Mackert-Lohman Formula**
 
 The Mackert-Lohman formula estimates the number of pages fetched in a bitmap scan, based on the coupon collector problem. It calculates how many unique pages contain the selected tuples:
 

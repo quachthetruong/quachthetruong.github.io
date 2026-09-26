@@ -3,7 +3,7 @@ title: "Bloom Filters Explained: A Fast and Space-Efficient Probabilistic Soluti
 date: 2025-04-18T17:29:51+07:00
 tags: ["math", "computer science"]
 aliases:
-  - "/posts/technical/bloom-filters-explained/"
+    - "/posts/technical/bloom-filters-explained/"
 ---
 
 ## Part 1: Motivation
@@ -43,12 +43,11 @@ Bloom filters are quietly at the heart of many systems:
 > “Does this file probably contain the key?”
 
 - Platforms like Quora, Medium, and Yahoo use Bloom filters to:
+    - Prevent duplicate content,
 
-  - Prevent duplicate content,
+    - Avoid redundant processing,
 
-  - Avoid redundant processing,
-
-  - Speed up internal caching systems.
+    - Speed up internal caching systems.
 
 Even if you don’t see them — Bloom filters are working behind the scenes, making large systems fast and efficient.
 
@@ -56,9 +55,9 @@ Even if you don’t see them — Bloom filters are working behind the scenes, ma
 
 ### What is a false positive?
 
-✅ When you check an element that **was inserted**, the Bloom filter says “yes” — that’s a `true positive`, and it’s 100% guaranteed correct.
+**Guaranteed:** When you check an element that **was inserted**, the Bloom filter says “yes” — that’s a `true positive`, and it’s 100% guaranteed correct.
 
-⚠️ But sometimes it says “yes” to something that **was never inserted** — that’s a `false positive`.
+**Caveat:** Sometimes it says “yes” to something that **was never inserted** — that’s a `false positive`.
 
 A false positive happens when a new element matches **the bit pattern of others** — even though it was never added.
 
@@ -148,7 +147,7 @@ After insert banana: [0, 1, 1, 0, 1, 0, 0, 1, 1, 0]
 
 - h₃(banana) = 8 → bit is 1
 
-All bits are 1 → Bloom filter says “Yes” → ✅ correct!
+All bits are 1 → Bloom filter says “Yes” → correct!
 
 #### Step 4: Check 'mango' (False Positive)
 
@@ -160,13 +159,13 @@ All bits are 1 → Bloom filter says “Yes” → ✅ correct!
 
 Check bits:
 
-- 2 → 1 ✅
+- 2 → 1 (bit is set)
 
-- 4 → 1 ✅
+- 4 → 1 (bit is set)
 
-- 7 → 1 ✅
+- 7 → 1 (bit is set)
 
-Bloom filter says “Yes”, but 'mango' was never inserted → ❌ false positive
+Bloom filter says “Yes”, but 'mango' was never inserted → **false positive**
 
 This happens because 'apple' and 'banana' already set those bits.
 
